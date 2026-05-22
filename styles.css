@@ -358,7 +358,7 @@ button {
 }
 
 .feature-list,
-.demo-path,
+.workflow-path,
 .decision-grid,
 .brief-points,
 .check-grid {
@@ -388,11 +388,11 @@ button {
   color: #244e68;
 }
 
-.demo-path {
+.workflow-path {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.demo-path button {
+.workflow-path button {
   min-height: 128px;
   padding: 15px;
   border: 1px solid var(--line);
@@ -401,13 +401,13 @@ button {
   text-align: left;
 }
 
-.demo-path button:hover {
+.workflow-path button:hover {
   border-color: var(--green);
   background: #f4faf6;
 }
 
-.demo-path strong,
-.demo-path span,
+.workflow-path strong,
+.workflow-path span,
 .decision-grid strong,
 .decision-grid span,
 .brief-points strong,
@@ -415,7 +415,7 @@ button {
   display: block;
 }
 
-.demo-path span,
+.workflow-path span,
 .decision-grid span,
 .brief-points span {
   margin-top: 7px;
@@ -1101,7 +1101,7 @@ button {
 @media (max-width: 1180px) {
   .metric-grid,
   .module-grid,
-  .demo-path,
+  .workflow-path,
   .decision-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1171,7 +1171,7 @@ button {
   .overview-grid,
   .feature-list,
   .hero-stat-grid,
-  .demo-path,
+  .workflow-path,
   .decision-grid,
   .check-grid,
   .approval-grid,

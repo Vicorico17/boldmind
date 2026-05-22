@@ -1,5 +1,5 @@
 const viewTitles = {
-  overview: "BoldMind Deal OS prototype",
+  overview: "BoldMind Deal OS",
   dashboard: "Fund operating cockpit",
   deal: "Deal workflow",
   nda: "NDA review assistant",
@@ -13,25 +13,25 @@ const modules = [
     title: "Deal Pipeline",
     status: "core",
     why: "Tracks opportunities from initial discussion through closing using BoldMind's real investment process.",
-    now: "Interactive in this prototype."
+    now: "Core workflow."
   },
   {
     title: "Document Intake",
     status: "core",
     why: "Centralizes IMs, NDAs, Q&A files, financial packs, meeting notes, and board packs before AI workflows run.",
-    now: "Interactive file intake mockup."
+    now: "Core workflow."
   },
   {
     title: "AI Screening and IC Memo",
     status: "core",
     why: "Turns the team's current Claude workflows into structured, repeatable screening outputs and memo sections.",
-    now: "Interactive AI output mockup."
+    now: "Core workflow."
   },
   {
     title: "NDA Review Assistant",
     status: "core",
     why: "Captures BoldMind's rejected clauses and preferred redlines so future NDAs are reviewed faster and consistently.",
-    now: "Interactive clause review mockup."
+    now: "Core workflow."
   },
   {
     title: "Due Diligence Workstreams",
@@ -61,7 +61,7 @@ const modules = [
     title: "Knowledge Base and Prompt Library",
     status: "core",
     why: "Stores prompts, precedents, memos, redlines, approved commentary, and reusable research workflows.",
-    now: "Referenced across the prototype."
+    now: "Shared platform layer."
   },
   {
     title: "Automation Manager",
@@ -298,7 +298,7 @@ function renderModules() {
 
   grid.innerHTML = modules
     .map((module) => {
-      const statusLabel = module.status === "core" ? "Core demo" : module.status === "phase" ? "Phase 2" : "Future";
+      const statusLabel = module.status === "core" ? "Core workflow" : module.status === "phase" ? "Phase 2" : "Future";
       const badgeClass = module.status === "core" ? "success" : module.status === "phase" ? "info" : "warning";
       return `
         <article class="module-card ${module.status}">
