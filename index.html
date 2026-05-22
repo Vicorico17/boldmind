@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BoldMind Deal OS Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand-block">
+          <div class="brand-mark">BM</div>
+          <div>
+            <p class="brand-kicker">Prototype</p>
+            <h1>BoldMind Deal OS</h1>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item is-active" data-view="overview">
+            <span class="nav-code">01</span>
+            Overview
+          </button>
+          <button class="nav-item" data-view="dashboard">
+            <span class="nav-code">02</span>
+            Dashboard
+          </button>
+          <button class="nav-item" data-view="deal">
+            <span class="nav-code">03</span>
+            Deal Workflow
+          </button>
+          <button class="nav-item" data-view="nda">
+            <span class="nav-code">04</span>
+            NDA Review
+          </button>
+          <button class="nav-item" data-view="portfolio">
+            <span class="nav-code">05</span>
+            Portfolio Preview
+          </button>
+          <button class="nav-item" data-view="modules">
+            <span class="nav-code">06</span>
+            Module Map
+          </button>
+          <button class="nav-item" data-view="explanation">
+            <span class="nav-code">07</span>
+            Pilot Notes
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p>PE-specific AI operating system demo for deal execution and portfolio workflows.</p>
+          <span class="status-pill">Working static prototype</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">For BoldMind partners</p>
+            <h2 id="viewTitle">BoldMind Deal OS prototype</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="secondary-btn" data-view-target="modules">View modules</button>
+            <button class="primary-btn" data-view-target="deal">Start demo</button>
+          </div>
+        </header>
+
+        <section id="overview" class="view is-active" aria-labelledby="overview-heading">
+          <div class="overview-hero">
+            <div class="hero-copy">
+              <p class="eyebrow">Working prototype</p>
+              <h3 id="overview-heading">A private equity operating system for BoldMind's deal and portfolio workflows.</h3>
+              <p>Built to replace manual AI chat loops with structured workflows, review controls, and reusable fund knowledge.</p>
+              <div class="hero-actions">
+                <button class="primary-btn" data-view-target="deal">Open deal workflow</button>
+                <button class="secondary-btn" data-view-target="nda">Review NDA module</button>
+              </div>
+            </div>
+            <div class="hero-panel">
+              <span class="badge success">Core demo works now</span>
+              <div class="hero-stat-grid">
+                <div>
+                  <strong>4</strong>
+                  <span>Interactive flows</span>
+                </div>
+                <div>
+                  <strong>21</strong>
+                  <span>Mapped modules</span>
+                </div>
+                <div>
+                  <strong>1</strong>
+                  <span>Clear pilot path</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="overview-grid">
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>What works in this prototype</h4>
+                  <p>These flows are clickable and ready to present.</p>
+                </div>
+              </div>
+              <div class="feature-list">
+                <span>Deal pipeline dashboard</span>
+                <span>Document intake mockup</span>
+                <span>AI screening output</span>
+                <span>Diligence task creation</span>
+                <span>NDA clause review</span>
+                <span>Portfolio KPI preview</span>
+              </div>
+            </section>
+
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>Upcoming modules</h4>
+                  <p>Shown in the product map, built after partner feedback.</p>
+                </div>
+              </div>
+              <div class="feature-list upcoming">
+                <span>CRM and stakeholder graph</span>
+                <span>Financial model workflows</span>
+                <span>Market and buyer research</span>
+                <span>Automation and agent manager</span>
+                <span>Board and LP reporting</span>
+                <span>Permissions and audit logs</span>
+              </div>
+            </section>
+          </div>
+
+          <section class="surface">
+            <div class="surface-header">
+              <div>
+                <h4>Recommended demo path</h4>
+                <p>Use this sequence when presenting the prototype.</p>
+              </div>
+            </div>
+            <div class="demo-path">
+              <button data-view-target="dashboard">
+                <strong>1. Fund cockpit</strong>
+                <span>Show active deals, partner queue, and workflow activity.</span>
+              </button>
+              <button data-view-target="deal">
+                <strong>2. Deal workflow</strong>
+                <span>Show document intake, AI screening, and task generation.</span>
+              </button>
+              <button data-view-target="nda">
+                <strong>3. NDA review</strong>
+                <span>Show BoldMind-specific clause playbook and suggested edits.</span>
+              </button>
+              <button data-view-target="portfolio">
+                <strong>4. Post-close preview</strong>
+                <span>Show how a closed deal becomes portfolio monitoring.</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="surface decision-surface">
+            <div class="surface-header">
+              <div>
+                <h4>Partner decisions needed</h4>
+                <p>Four decisions determine the real MVP scope.</p>
+              </div>
+            </div>
+            <div class="decision-grid">
+              <div>
+                <strong>First pilot workflow</strong>
+                <span>NDA review, IM screening, IC memo, or KPI reporting?</span>
+              </div>
+              <div>
+                <strong>Document source</strong>
+                <span>SharePoint, Google Drive, data room, email, or local upload?</span>
+              </div>
+              <div>
+                <strong>Export priority</strong>
+                <span>Word, Excel, PowerPoint, PDF, or all later?</span>
+              </div>
+              <div>
+                <strong>Product direction</strong>
+                <span>Internal BoldMind tool first, or SaaS-ready from day one?</span>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section id="dashboard" class="view" aria-labelledby="dashboard-heading">
+          <div class="section-heading">
+            <div>
+              <h3 id="dashboard-heading">Fund operating cockpit</h3>
+              <p>One place for active opportunities, AI workflow status, partner review items, and post-close monitoring signals.</p>
+            </div>
+            <div class="date-chip">Demo data - May 2026</div>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span class="metric-label">Fund I size</span>
+              <strong>EUR 60m</strong>
+              <span class="metric-note">Romania primary, Bulgaria and Croatia secondary</span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">Typical ticket</span>
+              <strong>EUR 3-7m</strong>
+              <span class="metric-note">Control, buyout, and growth situations</span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">Active deals</span>
+              <strong>7</strong>
+              <span class="metric-note">3 need AI review before IC</span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">Manual work avoided</span>
+              <strong>18h</strong>
+              <span class="metric-note">Demo estimate across docs, DD, and memos</span>
+            </article>
+          </div>
+
+          <div class="dashboard-layout">
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>Deal pipeline</h4>
+                  <p>Stage view follows BoldMind's real investment process.</p>
+                </div>
+              </div>
+
+              <div class="pipeline-board" aria-label="Deal pipeline">
+                <div class="pipeline-column">
+                  <span>Sourced</span>
+                  <button class="deal-tile">
+                    <strong>Project Atlas</strong>
+                    <small>B2B services - IM received</small>
+                  </button>
+                </div>
+                <div class="pipeline-column">
+                  <span>Screening</span>
+                  <button class="deal-tile is-hot">
+                    <strong>Project Augustus</strong>
+                    <small>Logistics - AI memo ready</small>
+                  </button>
+                </div>
+                <div class="pipeline-column">
+                  <span>Due Diligence</span>
+                  <button class="deal-tile">
+                    <strong>Project Orion</strong>
+                    <small>Healthcare - Q&A gaps</small>
+                  </button>
+                </div>
+                <div class="pipeline-column">
+                  <span>Documentation</span>
+                  <button class="deal-tile">
+                    <strong>Project Verde</strong>
+                    <small>Food processing - SPA draft</small>
+                  </button>
+                </div>
+                <div class="pipeline-column">
+                  <span>Closed</span>
+                  <button class="deal-tile">
+                    <strong>Pallet Express</strong>
+                    <small>Portfolio monitoring active</small>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>Partner action queue</h4>
+                  <p>Review items are produced by workflows, not manual chat threads.</p>
+                </div>
+              </div>
+
+              <div class="task-list">
+                <label class="task-row">
+                  <input type="checkbox">
+                  <span>
+                    Approve NDA clause fallback for Project Augustus
+                    <small>Legal risk - non-solicit too broad</small>
+                  </span>
+                </label>
+                <label class="task-row">
+                  <input type="checkbox">
+                  <span>
+                    Review IC screening memo before Monday IC
+                    <small>AI draft generated from IM and meeting notes</small>
+                  </span>
+                </label>
+                <label class="task-row">
+                  <input type="checkbox">
+                  <span>
+                    Validate Q2 EBITDA variance commentary
+                    <small>Pallet Express - actual vs budget below threshold</small>
+                  </span>
+                </label>
+              </div>
+            </section>
+          </div>
+
+          <section class="surface activity-surface">
+            <div class="surface-header">
+              <div>
+                <h4>Automation activity</h4>
+                <p>Every AI output is tied to a deal, document, reviewer, and approval state.</p>
+              </div>
+            </div>
+            <ol class="activity-feed" id="activityFeed">
+              <li><span>09:12</span> IM parsed for Project Augustus. Fit score, risks, and DD questions created.</li>
+              <li><span>09:20</span> NDA reviewed against BoldMind clause playbook. Three clauses flagged.</li>
+              <li><span>10:05</span> Pallet Express Q2 KPI pack mapped to standard reporting schema.</li>
+            </ol>
+          </section>
+        </section>
+
+        <section id="deal" class="view" aria-labelledby="deal-heading">
+          <div class="section-heading">
+            <div>
+              <h3 id="deal-heading">Deal workflow vertical slice</h3>
+              <p>This is the main demo path: document intake -> extraction -> memo -> tasks -> partner review.</p>
+            </div>
+            <button class="secondary-btn" data-view-target="nda">Go to NDA review</button>
+          </div>
+
+          <div class="deal-header">
+            <div>
+              <p class="eyebrow">Active opportunity</p>
+              <h3>Project Augustus</h3>
+              <p>Logistics platform with potential EUR 3-7m ticket, control-oriented structure, and clear cross-border scaling thesis.</p>
+            </div>
+            <div class="stage-rail" aria-label="Deal stage">
+              <span class="is-complete">Initial discussion</span>
+              <span class="is-active">Screening</span>
+              <span>Term sheet</span>
+              <span>Due diligence</span>
+              <span>Closing</span>
+            </div>
+          </div>
+
+          <div class="two-column">
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>Document intake</h4>
+                  <p>Drop in files that currently go through manual upload and prompt loops.</p>
+                </div>
+              </div>
+
+              <label class="dropzone" for="docInput">
+                <input id="docInput" type="file" multiple>
+                <span class="drop-icon">+</span>
+                <strong>Upload IM, NDA, Q&A, financial pack, or notes</strong>
+                <small>The prototype records file names and triggers demo AI outputs.</small>
+              </label>
+
+              <div class="document-table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Document</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="documentTable">
+                    <tr>
+                      <td>Project Augustus - Information Memorandum.pdf</td>
+                      <td>IM</td>
+                      <td><span class="badge success">Parsed</span></td>
+                    </tr>
+                    <tr>
+                      <td>Augustus NDA draft.docx</td>
+                      <td>NDA</td>
+                      <td><span class="badge warning">Needs review</span></td>
+                    </tr>
+                    <tr>
+                      <td>Management call notes.txt</td>
+                      <td>Notes</td>
+                      <td><span class="badge success">Indexed</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="button-row">
+                <button class="primary-btn" id="runScreeningBtn">Run AI screening</button>
+                <button class="secondary-btn" id="generateTasksBtn">Create diligence tasks</button>
+              </div>
+            </section>
+
+            <section class="surface ai-output">
+              <div class="surface-header">
+                <div>
+                  <h4>AI screening output</h4>
+                  <p>Structured outputs replace isolated Claude sessions.</p>
+                </div>
+                <span class="badge info" id="screeningStatus">Ready</span>
+              </div>
+
+              <div class="output-grid">
+                <div class="output-block">
+                  <span>Company snapshot</span>
+                  <p id="snapshotText">Romanian logistics business with scalable delivery capacity, recurring B2B customers, and value creation potential through reporting discipline and bolt-on M&A.</p>
+                </div>
+                <div class="output-block">
+                  <span>PE fit score</span>
+                  <p><strong id="fitScore">4.2 / 5</strong> - strong growth path, modernizable reporting, visible exit routes.</p>
+                </div>
+                <div class="output-block">
+                  <span>Red flags</span>
+                  <ul id="redFlagList">
+                    <li>Customer concentration needs source data validation.</li>
+                    <li>Working capital seasonality unclear in IM.</li>
+                    <li>Management reporting pack not yet standardized.</li>
+                  </ul>
+                </div>
+                <div class="output-block">
+                  <span>Generated IC memo sections</span>
+                  <ul>
+                    <li>Executive takeaways</li>
+                    <li>Investment thesis and risks</li>
+                    <li>Financial quality assessment</li>
+                    <li>Diligence priority questions</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section class="surface">
+            <div class="surface-header">
+              <div>
+                <h4>Diligence workstream tasks</h4>
+                <p>AI findings become owned tasks with review status instead of disappearing into a chat transcript.</p>
+              </div>
+            </div>
+            <div class="workstream-grid" id="taskGrid">
+              <article class="workstream-item">
+                <span>Financial</span>
+                <strong>Reconcile EBITDA bridge to management accounts</strong>
+                <small>Owner: Analyst - Due Friday</small>
+              </article>
+              <article class="workstream-item">
+                <span>Commercial</span>
+                <strong>Validate top 10 customer retention and contract terms</strong>
+                <small>Owner: Associate - Due Monday</small>
+              </article>
+              <article class="workstream-item">
+                <span>Legal</span>
+                <strong>Run NDA and term sheet against BoldMind playbook</strong>
+                <small>Owner: Counsel - In progress</small>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section id="nda" class="view" aria-labelledby="nda-heading">
+          <div class="section-heading">
+            <div>
+              <h3 id="nda-heading">NDA review assistant</h3>
+              <p>Robi's request becomes a concrete module: learn BoldMind's preferred changes and propose future edits faster.</p>
+            </div>
+            <button class="primary-btn" id="runNdaBtn">Run NDA review</button>
+          </div>
+
+          <div class="two-column wide-left">
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>BoldMind clause playbook</h4>
+                  <p>This is where historical redlines become a repeatable review standard.</p>
+                </div>
+              </div>
+
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Clause</th>
+                    <th>Preferred position</th>
+                    <th>Default action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Confidentiality term</td>
+                    <td>2-3 years, trade secrets carved out if needed</td>
+                    <td>Shorten if indefinite</td>
+                  </tr>
+                  <tr>
+                    <td>Non-solicit</td>
+                    <td>Limited to named deal team and target employees</td>
+                    <td>Narrow scope</td>
+                  </tr>
+                  <tr>
+                    <td>Residual knowledge</td>
+                    <td>No broad residuals that weaken confidentiality</td>
+                    <td>Delete or constrain</td>
+                  </tr>
+                  <tr>
+                    <td>Jurisdiction</td>
+                    <td>Aligned with deal documents or acceptable neutral venue</td>
+                    <td>Escalate if mismatch</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>Review result</h4>
+                  <p>Partner sees what changed, why it matters, and the recommended fallback.</p>
+                </div>
+                <span class="badge warning" id="ndaStatus">3 flags</span>
+              </div>
+
+              <div class="clause-stack" id="clauseStack">
+                <article class="clause-item high">
+                  <div>
+                    <span class="risk-label">High</span>
+                    <h5>Non-solicit too broad</h5>
+                  </div>
+                  <p>Draft restricts hiring across all affiliates for 24 months. BoldMind should narrow to people directly involved in the process.</p>
+                  <strong>Suggested edit:</strong>
+                  <small>Limit non-solicit to named management and deal team contacts for 12 months.</small>
+                </article>
+                <article class="clause-item medium">
+                  <div>
+                    <span class="risk-label">Medium</span>
+                    <h5>Indefinite confidentiality term</h5>
+                  </div>
+                  <p>Current language has no sunset for all information. This is acceptable only for trade secrets.</p>
+                  <strong>Suggested edit:</strong>
+                  <small>Set 3-year term for ordinary confidential information.</small>
+                </article>
+                <article class="clause-item medium">
+                  <div>
+                    <span class="risk-label">Medium</span>
+                    <h5>Residual knowledge carve-out</h5>
+                  </div>
+                  <p>Residuals clause could allow use of information remembered by team members.</p>
+                  <strong>Suggested edit:</strong>
+                  <small>Delete clause or constrain it so it cannot override confidentiality duties.</small>
+                </article>
+              </div>
+            </section>
+          </div>
+
+          <section class="surface">
+            <div class="surface-header">
+              <div>
+                <h4>Approval workflow</h4>
+                <p>The legal workflow is intentionally auditable: AI suggests, human approves, precedent improves.</p>
+              </div>
+            </div>
+            <div class="approval-grid">
+              <label class="approval-step">
+                <input type="checkbox" checked>
+                <span>AI clause extraction complete</span>
+              </label>
+              <label class="approval-step">
+                <input type="checkbox" checked>
+                <span>Compared against BoldMind playbook</span>
+              </label>
+              <label class="approval-step">
+                <input type="checkbox">
+                <span>Counsel approves proposed edits</span>
+              </label>
+              <label class="approval-step">
+                <input type="checkbox">
+                <span>Partner signs off fallback position</span>
+              </label>
+            </div>
+          </section>
+        </section>
+
+        <section id="portfolio" class="view" aria-labelledby="portfolio-heading">
+          <div class="section-heading">
+            <div>
+              <h3 id="portfolio-heading">Portfolio monitoring preview</h3>
+              <p>After closing, the deal becomes a long-lived portfolio company with KPI reporting, variance review, and LP commentary.</p>
+            </div>
+            <span class="badge info">Phase 1 preview</span>
+          </div>
+
+          <div class="portfolio-layout">
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>Pallet Express - Q2 monitoring</h4>
+                  <p>Demo company converted automatically from Project Augustus after close.</p>
+                </div>
+                <span class="status-pill warning">On Watch</span>
+              </div>
+
+              <div class="kpi-visual">
+                <div class="chart-area" aria-label="EBITDA performance chart">
+                  <svg viewBox="0 0 640 260" role="img" aria-label="Actual EBITDA is below budget in Q2">
+                    <defs>
+                      <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#6aa36f" stop-opacity="0.3"></stop>
+                        <stop offset="100%" stop-color="#6aa36f" stop-opacity="0.04"></stop>
+                      </linearGradient>
+                    </defs>
+                    <path d="M40 210 L160 180 L280 150 L400 105 L520 90 L600 70" fill="none" stroke="#2f6f5e" stroke-width="4"></path>
+                    <path d="M40 220 L160 190 L280 172 L400 150 L520 142 L600 132" fill="none" stroke="#c56f3a" stroke-width="4"></path>
+                    <path d="M40 210 L160 180 L280 150 L400 105 L520 90 L600 70 L600 230 L40 230 Z" fill="url(#chartFill)"></path>
+                    <line x1="40" y1="230" x2="600" y2="230" stroke="#c5c9c2"></line>
+                    <text x="42" y="252">Q1</text>
+                    <text x="280" y="252">Q2</text>
+                    <text x="555" y="252">Q4 plan</text>
+                    <text x="440" y="85" class="svg-label">Budget</text>
+                    <text x="438" y="158" class="svg-label warn">Actual</text>
+                  </svg>
+                </div>
+                <div class="variance-box">
+                  <span>AI variance draft</span>
+                  <p>Q2 EBITDA is EUR 1.4m vs EUR 1.7m budget, a 17.6% shortfall. The draft explanation attributes the gap to delayed enterprise client onboarding and gross margin pressure from legacy contracts. Analyst review is required before LP report inclusion.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="surface">
+              <div class="surface-header">
+                <div>
+                  <h4>KPI heatmap</h4>
+                  <p>Actual vs budget, prior year, and IC plan.</p>
+                </div>
+              </div>
+
+              <table class="data-table compact">
+                <thead>
+                  <tr>
+                    <th>KPI</th>
+                    <th>Actual</th>
+                    <th>Budget</th>
+                    <th>Flag</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Revenue</td>
+                    <td>EUR 8.9m</td>
+                    <td>EUR 9.1m</td>
+                    <td><span class="badge success">OK</span></td>
+                  </tr>
+                  <tr>
+                    <td>EBITDA</td>
+                    <td>EUR 1.4m</td>
+                    <td>EUR 1.7m</td>
+                    <td><span class="badge danger">Watch</span></td>
+                  </tr>
+                  <tr>
+                    <td>Net debt</td>
+                    <td>EUR 12.0m</td>
+                    <td>EUR 11.6m</td>
+                    <td><span class="badge warning">Check</span></td>
+                  </tr>
+                  <tr>
+                    <td>On-time delivery</td>
+                    <td>94%</td>
+                    <td>93%</td>
+                    <td><span class="badge success">OK</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <section class="surface">
+            <div class="surface-header">
+              <div>
+                <h4>Future reporting workflow</h4>
+                <p>This is where Phase 2 expands: board packs, valuations, LP reports, and compliance calendar.</p>
+              </div>
+            </div>
+            <div class="report-steps">
+              <span>KPI submission</span>
+              <span>Variance flag</span>
+              <span>Analyst commentary</span>
+              <span>Partner sign-off</span>
+              <span>LP report export</span>
+            </div>
+          </section>
+        </section>
+
+        <section id="modules" class="view" aria-labelledby="modules-heading">
+          <div class="section-heading">
+            <div>
+              <h3 id="modules-heading">Module map</h3>
+              <p>The prototype shows the full operating system roadmap. The core deal and NDA workflow is interactive now.</p>
+            </div>
+            <div class="legend">
+              <span><i class="dot core"></i> Core demo</span>
+              <span><i class="dot phase"></i> Phase 2</span>
+              <span><i class="dot future"></i> Future</span>
+            </div>
+          </div>
+          <div class="module-grid" id="moduleGrid"></div>
+        </section>
+
+        <section id="explanation" class="view" aria-labelledby="explanation-heading">
+          <div class="section-heading">
+            <div>
+              <h3 id="explanation-heading">Pilot notes</h3>
+              <p>Concise context for deciding whether to move from prototype to internal pilot.</p>
+            </div>
+          </div>
+
+          <div class="brief-layout">
+            <section class="surface text-surface">
+              <h4>Product thesis</h4>
+              <p>BoldMind already uses AI across screening, diligence, models, research, legal review, and reporting. The next step is not another AI chat. The next step is a controlled workflow layer around the fund's existing work.</p>
+
+              <div class="brief-points">
+                <div>
+                  <strong>Problem</strong>
+                  <span>AI work is valuable but fragmented across manual uploads, prompts, files, and approvals.</span>
+                </div>
+                <div>
+                  <strong>Solution</strong>
+                  <span>Attach every AI output to a deal, document, owner, task, and approval state.</span>
+                </div>
+                <div>
+                  <strong>First wedge</strong>
+                  <span>Deal screening and NDA review: high-frequency, easy to understand, and partner-relevant.</span>
+                </div>
+              </div>
+
+              <h4>What this prototype demonstrates</h4>
+              <div class="check-grid">
+                <span>Structured deal intake</span>
+                <span>AI screening output</span>
+                <span>Diligence tasks</span>
+                <span>NDA clause playbook</span>
+                <span>Partner review queue</span>
+                <span>Portfolio monitoring preview</span>
+              </div>
+            </section>
+
+            <section class="surface text-surface">
+              <h4>Questions for partner feedback</h4>
+              <ol class="question-list">
+                <li>Which first workflow has the clearest ROI: NDA review, IM screening, IC memo, DD tasks, or KPI reporting?</li>
+                <li>Where should the pilot read documents from: SharePoint, Google Drive, data room, email, or uploads?</li>
+                <li>Which exports are essential first: Word, Excel, PowerPoint, PDF, or none for pilot?</li>
+                <li>Can anonymized real documents be used to train the workflow rules?</li>
+                <li>Should the first version support Romanian and English outputs?</li>
+                <li>Who approves AI outputs before they leave the investment team?</li>
+              </ol>
+
+              <h4>Prototype boundary</h4>
+              <p>This version uses realistic demo data and static interactions. Production would add live AI APIs, document storage, permissions, audit logs, and integrations after the pilot scope is approved.</p>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
