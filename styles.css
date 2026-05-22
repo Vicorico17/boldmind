@@ -203,6 +203,9 @@ button {
 .primary-btn,
 .secondary-btn,
 .icon-text-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 38px;
   padding: 9px 13px;
   border-radius: 8px;
@@ -1128,13 +1131,51 @@ button {
   }
 
   .sidebar {
-    position: static;
+    position: sticky;
     height: auto;
-    padding: 18px;
+    top: 0;
+    z-index: 20;
+    gap: 12px;
+    padding: 12px;
+    box-shadow: 0 10px 28px rgba(18, 58, 50, 0.22);
+  }
+
+  .brand-block {
+    gap: 10px;
+  }
+
+  .brand-mark {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+    font-size: 0.86rem;
+  }
+
+  .brand-kicker {
+    font-size: 0.62rem;
+  }
+
+  .brand-block h1 {
+    font-size: 0.95rem;
   }
 
   .nav-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 3px;
+    scrollbar-width: none;
+  }
+
+  .nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-item {
+    flex: 0 0 auto;
+    min-height: 38px;
+    padding: 8px 11px;
+    white-space: nowrap;
   }
 
   .sidebar-footer {
@@ -1142,7 +1183,7 @@ button {
   }
 
   .main {
-    padding: 18px;
+    padding: 14px;
   }
 
   .topbar,
@@ -1157,9 +1198,57 @@ button {
     width: 100%;
   }
 
+  .topbar {
+    gap: 12px;
+    margin-bottom: 14px;
+    padding: 14px;
+  }
+
+  .topbar h2 {
+    font-size: 1.18rem;
+  }
+
   .topbar-actions button,
-  .button-row button {
+  .button-row button,
+  .hero-actions button {
     flex: 1 1 180px;
+  }
+
+  .overview-hero {
+    padding: 18px;
+  }
+
+  .hero-copy h3 {
+    font-size: clamp(1.65rem, 8vw, 2.35rem);
+    line-height: 1.08;
+  }
+
+  .hero-copy p {
+    font-size: 0.98rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .surface {
+    padding: 15px;
+    overflow-x: auto;
+  }
+
+  .module-card,
+  .workstream-item,
+  .output-block {
+    min-height: auto;
+  }
+
+  .pipeline-board {
+    grid-template-columns: repeat(5, minmax(172px, 1fr));
+    scroll-snap-type: x proximity;
+  }
+
+  .pipeline-column {
+    scroll-snap-align: start;
   }
 
   .metric-grid,
@@ -1181,19 +1270,94 @@ button {
 }
 
 @media (max-width: 560px) {
-  .nav-list {
-    grid-template-columns: 1fr;
+  .main {
+    padding: 10px;
   }
 
-  .metric-grid {
-    grid-template-columns: 1fr;
+  .topbar {
+    padding: 12px;
+  }
+
+  .topbar-actions button,
+  .button-row button,
+  .hero-actions button {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .primary-btn,
+  .secondary-btn,
+  .icon-text-btn {
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .overview-hero {
+    padding: 16px;
+  }
+
+  .hero-copy h3 {
+    font-size: clamp(1.48rem, 8.5vw, 1.9rem);
+  }
+
+  .hero-panel {
+    padding: 12px;
+  }
+
+  .hero-stat-grid div,
+  .decision-grid div,
+  .brief-points div {
+    min-height: auto;
+  }
+
+  .section-heading h3,
+  .deal-header h3 {
+    font-size: 1.32rem;
+  }
+
+  .metric-card strong {
+    font-size: 1.8rem;
+  }
+
+  .feature-list span,
+  .check-grid span,
+  .report-steps span {
+    min-height: 40px;
+    padding: 10px;
+  }
+
+  .workflow-path button {
+    min-height: auto;
   }
 
   .pipeline-board {
-    grid-template-columns: repeat(5, 180px);
+    grid-template-columns: repeat(5, 172px);
   }
 
   .data-table {
-    min-width: 560px;
+    min-width: 620px;
+  }
+
+  .data-table.compact {
+    min-width: 480px;
+  }
+
+  .dropzone {
+    min-height: 150px;
+    padding: 16px;
+  }
+
+  .activity-feed li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .chart-area {
+    min-height: 230px;
+  }
+
+  .chart-area svg {
+    min-height: 210px;
   }
 }
