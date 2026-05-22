@@ -21,11 +21,15 @@
 
 html {
   min-width: 320px;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--paper);
 }
 
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--paper);
@@ -1126,18 +1130,35 @@ button {
 }
 
 @media (max-width: 860px) {
+  .app-shell,
+  .main,
+  .view,
+  .surface,
+  .overview-hero,
+  .hero-copy,
+  .hero-panel,
+  .deal-header,
+  .metric-card,
+  .module-card,
+  .output-block,
+  .workstream-item,
+  .clause-item {
+    min-width: 0;
+    max-width: 100%;
+  }
+
   .app-shell {
     grid-template-columns: 1fr;
+    justify-items: start;
   }
 
   .sidebar {
-    position: sticky;
+    position: static;
+    width: 100%;
+    max-width: 390px;
     height: auto;
-    top: 0;
-    z-index: 20;
     gap: 12px;
     padding: 12px;
-    box-shadow: 0 10px 28px rgba(18, 58, 50, 0.22);
   }
 
   .brand-block {
@@ -1160,22 +1181,14 @@ button {
   }
 
   .nav-list {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 3px;
-    scrollbar-width: none;
-  }
-
-  .nav-list::-webkit-scrollbar {
-    display: none;
   }
 
   .nav-item {
-    flex: 0 0 auto;
     min-height: 38px;
     padding: 8px 11px;
-    white-space: nowrap;
   }
 
   .sidebar-footer {
@@ -1183,10 +1196,15 @@ button {
   }
 
   .main {
+    width: 100%;
+    max-width: 390px;
     padding: 14px;
   }
 
-  .topbar,
+  .topbar {
+    display: none;
+  }
+
   .section-heading,
   .surface-header {
     align-items: stretch;
@@ -1198,42 +1216,54 @@ button {
     width: 100%;
   }
 
-  .topbar {
-    gap: 12px;
-    margin-bottom: 14px;
-    padding: 14px;
-  }
-
-  .topbar h2 {
-    font-size: 1.18rem;
-  }
-
-  .topbar-actions button,
   .button-row button,
   .hero-actions button {
     flex: 1 1 180px;
   }
 
   .overview-hero {
+    display: block;
+    width: 100%;
+    gap: 12px;
     padding: 18px;
+    overflow: hidden;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 100%;
   }
 
   .hero-copy h3 {
-    font-size: clamp(1.65rem, 8vw, 2.35rem);
-    line-height: 1.08;
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(1.55rem, 7vw, 2.1rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
   }
 
   .hero-copy p {
     font-size: 0.98rem;
+    overflow-wrap: anywhere;
   }
 
   .hero-actions {
     width: 100%;
+    margin-top: 16px;
   }
 
   .surface {
+    width: 100%;
+    max-width: 100%;
     padding: 15px;
-    overflow-x: auto;
+  }
+
+  .surface p,
+  .surface span,
+  .surface strong,
+  .nav-item {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .module-card,
@@ -1243,12 +1273,7 @@ button {
   }
 
   .pipeline-board {
-    grid-template-columns: repeat(5, minmax(172px, 1fr));
-    scroll-snap-type: x proximity;
-  }
-
-  .pipeline-column {
-    scroll-snap-align: start;
+    grid-template-columns: 1fr;
   }
 
   .metric-grid,
@@ -1274,11 +1299,6 @@ button {
     padding: 10px;
   }
 
-  .topbar {
-    padding: 12px;
-  }
-
-  .topbar-actions button,
   .button-row button,
   .hero-actions button {
     flex-basis: 100%;
@@ -1291,18 +1311,23 @@ button {
     justify-content: center;
     width: 100%;
     min-height: 42px;
+    white-space: normal;
   }
 
   .overview-hero {
-    padding: 16px;
+    padding: 14px;
   }
 
   .hero-copy h3 {
-    font-size: clamp(1.48rem, 8.5vw, 1.9rem);
+    font-size: clamp(1.38rem, 7.6vw, 1.72rem);
+  }
+
+  .hero-copy p {
+    font-size: 0.92rem;
   }
 
   .hero-panel {
-    padding: 12px;
+    display: none;
   }
 
   .hero-stat-grid div,
@@ -1332,15 +1357,24 @@ button {
   }
 
   .pipeline-board {
-    grid-template-columns: repeat(5, 172px);
+    grid-template-columns: 1fr;
   }
 
   .data-table {
-    min-width: 620px;
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    font-size: 0.78rem;
   }
 
   .data-table.compact {
-    min-width: 480px;
+    min-width: 0;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 8px 7px;
+    overflow-wrap: anywhere;
   }
 
   .dropzone {
@@ -1359,5 +1393,20 @@ button {
 
   .chart-area svg {
     min-height: 210px;
+  }
+
+  .nav-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav-item {
+    gap: 7px;
+    min-height: 36px;
+    padding: 7px 8px;
+    font-size: 0.86rem;
+  }
+
+  .nav-code {
+    font-size: 0.68rem;
   }
 }
