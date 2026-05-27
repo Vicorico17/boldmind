@@ -1,18 +1,16 @@
 const viewTitles = {
   overview: "BoldMind Deal OS",
   dashboard: "Fund operating cockpit",
-  deal: "Deal workflow",
   nda: "NDA review assistant",
   portfolio: "Portfolio monitoring preview",
-  modules: "Module map",
-  explanation: "Pilot notes"
+  modules: "Module map"
 };
 
 const modules = [
   {
-    title: "Deal Pipeline",
+    title: "Opportunity Pipeline",
     status: "core",
-    why: "Tracks opportunities from initial discussion through closing using BoldMind's real investment process.",
+    why: "Tracks mock opportunities from initial discussion through closing using configurable stage gates.",
     now: "Core workflow."
   },
   {
@@ -24,25 +22,19 @@ const modules = [
   {
     title: "AI Screening and IC Memo",
     status: "core",
-    why: "Turns the team's current Claude workflows into structured, repeatable screening outputs and memo sections.",
+    why: "Turns sample review workflows into structured, repeatable screening outputs and memo sections.",
     now: "Core workflow."
   },
   {
     title: "NDA Review Assistant",
     status: "core",
-    why: "Captures BoldMind's rejected clauses and preferred redlines so future NDAs are reviewed faster and consistently.",
+    why: "Captures sample rejected clauses and preferred redlines so future NDAs are reviewed faster and consistently.",
     now: "Core workflow."
-  },
-  {
-    title: "Due Diligence Workstreams",
-    status: "core",
-    why: "Converts AI red flags into assigned financial, legal, commercial, and operational diligence tasks.",
-    now: "Visible in deal workflow."
   },
   {
     title: "CRM and Stakeholders",
     status: "phase",
-    why: "Maps founders, advisors, lenders, co-investors, board members, and LP contacts to deals and portfolio companies.",
+    why: "Maps founders, advisors, lenders, co-investors, board members, and LP contacts to opportunities and portfolio companies.",
     now: "Planned module."
   },
   {
@@ -66,7 +58,7 @@ const modules = [
   {
     title: "Automation Manager",
     status: "phase",
-    why: "Defines triggers such as deal stage changes, document uploads, KPI deadlines, and approval reminders.",
+    why: "Defines triggers such as stage changes, document uploads, KPI deadlines, and approval reminders.",
     now: "Activity feed preview."
   },
   {
@@ -78,13 +70,13 @@ const modules = [
   {
     title: "Meeting Notes and Summaries",
     status: "phase",
-    why: "Links management calls, advisor calls, board meetings, transcripts, decisions, and action items to the right object.",
+    why: "Links sample calls, advisor calls, board meetings, transcripts, decisions, and action items to the right object.",
     now: "Planned module."
   },
   {
     title: "Portfolio Monitoring and Reporting",
     status: "core",
-    why: "Treats a closed deal as a long-lived portfolio company with KPI packs, variance flags, and commentary.",
+    why: "Treats a closed opportunity as a long-lived portfolio company with KPI packs, variance flags, and commentary.",
     now: "Interactive preview screen."
   },
   {
@@ -120,7 +112,7 @@ const modules = [
   {
     title: "BI and KPI Dashboard",
     status: "phase",
-    why: "Aggregates pipeline, fund pacing, sector exposure, deal conversion, and cross-portfolio operating KPIs.",
+    why: "Aggregates pipeline, fund pacing, sector exposure, opportunity conversion, and cross-portfolio operating KPIs.",
     now: "Dashboard preview."
   },
   {
@@ -136,8 +128,6 @@ const modules = [
     now: "Built into the product concept."
   }
 ];
-
-let workflowStep = 0;
 
 const navButtons = document.querySelectorAll("[data-view]");
 const viewTitle = document.getElementById("viewTitle");
@@ -178,92 +168,6 @@ function addActivity(message) {
   item.append(time, document.createTextNode(message));
   feed.prepend(item);
 }
-
-document.getElementById("runWorkflowBtn")?.addEventListener("click", () => {
-  const actions = [
-    " AI screening generated for Project Atlas and routed to the analyst owner.",
-    " NDA fallback language prepared for Project Augustus and moved to partner approval.",
-    " Q2 portfolio variance commentary drafted for Pallet Express.",
-    " Diligence checklist updated with two new financial reconciliation tasks."
-  ];
-  addActivity(actions[workflowStep % actions.length]);
-  workflowStep += 1;
-});
-
-document.getElementById("docInput")?.addEventListener("change", (event) => {
-  const table = document.getElementById("documentTable");
-  const files = Array.from(event.target.files || []);
-  if (!table || files.length === 0) return;
-
-  files.forEach((file) => {
-    const row = document.createElement("tr");
-    const name = document.createElement("td");
-    const type = document.createElement("td");
-    const status = document.createElement("td");
-    const extension = file.name.split(".").pop()?.toUpperCase() || "FILE";
-
-    name.textContent = file.name;
-    type.textContent = inferDocumentType(file.name, extension);
-    status.innerHTML = '<span class="badge info">Queued</span>';
-    row.append(name, type, status);
-    table.prepend(row);
-  });
-
-  addActivity(` ${files.length} document(s) queued in deal intake.`);
-});
-
-function inferDocumentType(fileName, extension) {
-  const lower = fileName.toLowerCase();
-  if (lower.includes("nda")) return "NDA";
-  if (lower.includes("memo") || lower.includes("im")) return "IM";
-  if (lower.includes("model") || lower.includes("financial")) return "Financial";
-  if (lower.includes("qa") || lower.includes("q&a")) return "Q&A";
-  if (lower.includes("note")) return "Notes";
-  return extension;
-}
-
-document.getElementById("runScreeningBtn")?.addEventListener("click", () => {
-  const status = document.getElementById("screeningStatus");
-  const fitScore = document.getElementById("fitScore");
-  const snapshot = document.getElementById("snapshotText");
-  const flags = document.getElementById("redFlagList");
-
-  if (status) {
-    status.textContent = "Generated";
-    status.className = "badge success";
-  }
-
-  if (fitScore) fitScore.textContent = "4.4 / 5";
-  if (snapshot) {
-    snapshot.textContent =
-      "AI has converted the IM into a structured opportunity record: founder-led logistics platform, likely EUR 3-7m control ticket, clear growth route through management reporting, enterprise sales, and bolt-on acquisitions.";
-  }
-
-  if (flags) {
-    flags.innerHTML = `
-      <li>Revenue bridge by customer cohort is missing from the current IM.</li>
-      <li>Net debt and normalized working capital need reconciliation before term sheet.</li>
-      <li>NDA contains three clauses outside BoldMind's preferred position.</li>
-    `;
-  }
-
-  addActivity(" AI screening completed for Project Augustus and IC memo sections refreshed.");
-});
-
-document.getElementById("generateTasksBtn")?.addEventListener("click", () => {
-  const taskGrid = document.getElementById("taskGrid");
-  if (!taskGrid) return;
-
-  const task = document.createElement("article");
-  task.className = "workstream-item";
-  task.innerHTML = `
-    <span>AI generated</span>
-    <strong>Ask management for cohort revenue bridge and NWC normalization support</strong>
-    <small>Owner: Analyst - Created now</small>
-  `;
-  taskGrid.prepend(task);
-  addActivity(" Diligence task created from AI red flag.");
-});
 
 document.getElementById("runNdaBtn")?.addEventListener("click", () => {
   const status = document.getElementById("ndaStatus");
