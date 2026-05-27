@@ -3,557 +3,407 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BoldMind Capital</title>
+    <title>BoldMind Deal OS</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"]
+            },
+            colors: {
+              navy: "#1E253A",
+              orange: "#F6921E",
+              offwhite: "#F7F6F2",
+              softgrey: "#E4E4E4"
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f7f6f2;
+        color: #111827;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+      }
+
+      .gradient-blur {
+        position: fixed;
+        z-index: 40;
+        inset: 0 0 auto 0;
+        height: 12%;
+        pointer-events: none;
+      }
+
+      .gradient-blur > div,
+      .gradient-blur::before,
+      .gradient-blur::after {
+        position: absolute;
+        inset: 0;
+      }
+
+      .gradient-blur::before {
+        content: "";
+        z-index: 1;
+        backdrop-filter: blur(0.5px);
+        mask: linear-gradient(to top, transparent 0%, #000 12.5%, #000 25%, transparent 37.5%);
+      }
+
+      .gradient-blur > div:nth-of-type(1) {
+        z-index: 2;
+        backdrop-filter: blur(1px);
+        mask: linear-gradient(to top, transparent 12.5%, #000 25%, #000 37.5%, transparent 50%);
+      }
+
+      .gradient-blur > div:nth-of-type(2) {
+        z-index: 3;
+        backdrop-filter: blur(2px);
+        mask: linear-gradient(to top, transparent 25%, #000 37.5%, #000 50%, transparent 62.5%);
+      }
+
+      .gradient-blur > div:nth-of-type(3) {
+        z-index: 4;
+        backdrop-filter: blur(4px);
+        mask: linear-gradient(to top, transparent 37.5%, #000 50%, #000 62.5%, transparent 75%);
+      }
+
+      .gradient-blur > div:nth-of-type(4) {
+        z-index: 5;
+        backdrop-filter: blur(8px);
+        mask: linear-gradient(to top, transparent 50%, #000 62.5%, #000 75%, transparent 87.5%);
+      }
+
+      .gradient-blur > div:nth-of-type(5) {
+        z-index: 6;
+        backdrop-filter: blur(16px);
+        mask: linear-gradient(to top, transparent 62.5%, #000 75%, #000 87.5%, transparent 100%);
+      }
+
+      .gradient-blur > div:nth-of-type(6) {
+        z-index: 7;
+        backdrop-filter: blur(32px);
+        mask: linear-gradient(to top, transparent 75%, #000 87.5%, #000 100%);
+      }
+
+      .gradient-blur::after {
+        content: "";
+        z-index: 8;
+        backdrop-filter: blur(64px);
+        mask: linear-gradient(to top, transparent 87.5%, #000 100%);
+      }
+    </style>
   </head>
-  <body>
-    <div class="app-shell">
-      <aside class="sidebar" aria-label="Primary navigation">
-        <a class="brand-block" href="./index.html" aria-label="BoldMind Capital home">
-          <img class="brand-logo" src="https://boldmindcapital.com/images/logo.svg" alt="BoldMind Capital">
-          <div>
-            <p class="brand-kicker">BoldMind Capital</p>
-            <h1>Deal OS</h1>
-          </div>
-        </a>
-
-        <nav class="nav-list">
-          <button class="nav-item is-active" data-view="overview">
-            <span class="nav-code">01</span>
-            Overview
-          </button>
-          <button class="nav-item" data-view="dashboard">
-            <span class="nav-code">02</span>
-            Dashboard
-          </button>
-          <button class="nav-item" data-view="nda">
-            <span class="nav-code">03</span>
-            NDA Review
-          </button>
-          <button class="nav-item" data-view="portfolio">
-            <span class="nav-code">04</span>
-            Portfolio Preview
-          </button>
-          <button class="nav-item" data-view="modules">
-            <span class="nav-code">05</span>
-            Module Map
-          </button>
-        </nav>
-
-        <div class="sidebar-footer">
-          <p>PE-specific AI operating system for investment review and portfolio workflows.</p>
-          <span class="status-pill">Concept build</span>
-        </div>
-      </aside>
-
-      <main class="main">
-        <header class="topbar">
-          <div>
-            <p class="eyebrow">Demo workspace</p>
-            <h2 id="viewTitle">BoldMind Deal OS</h2>
-          </div>
-          <div class="topbar-actions">
-            <button class="secondary-btn" data-view-target="modules">View modules</button>
-            <button class="primary-btn" data-view-target="dashboard">Open dashboard</button>
-          </div>
-        </header>
-
-        <section id="overview" class="view is-active" aria-labelledby="overview-heading">
-          <div class="overview-hero">
-            <div class="hero-copy">
-              <p class="eyebrow">Product concept</p>
-              <h3 id="overview-heading">A private equity operating system shown with mock data only.</h3>
-              <p>Built to replace manual AI chat loops with structured reviews, approval controls, and reusable fund knowledge.</p>
-              <div class="hero-actions">
-                <button class="primary-btn" data-view-target="dashboard">Open dashboard</button>
-                <button class="secondary-btn" data-view-target="nda">Review NDA module</button>
-              </div>
-            </div>
-            <div class="hero-panel">
-              <span class="badge success">Mock data only</span>
-              <div class="hero-stat-grid">
-                <div>
-                  <strong>3</strong>
-                  <span>Interactive screens</span>
-                </div>
-                <div>
-                  <strong>20</strong>
-                  <span>Mapped modules</span>
-                </div>
-                <div>
-                  <strong>1</strong>
-                  <span>Implementation path</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="overview-grid">
-            <section class="surface">
-              <div class="surface-header">
-                <div>
-                  <h4>Core capabilities</h4>
-                  <p>The first build focuses on review queues, legal review, and post-close monitoring.</p>
-                </div>
-              </div>
-              <div class="feature-list">
-                <span>Mock pipeline dashboard</span>
-                <span>Document review queue</span>
-                <span>Mock AI screening signals</span>
-                <span>Approval task tracking</span>
-                <span>NDA clause review</span>
-                <span>Portfolio KPI preview</span>
-              </div>
-            </section>
-
-            <section class="surface">
-              <div class="surface-header">
-                <div>
-                  <h4>Upcoming modules</h4>
-                  <p>These modules extend the platform after the first workflow is validated.</p>
-                </div>
-              </div>
-              <div class="feature-list upcoming">
-                <span>CRM and stakeholder graph</span>
-                <span>Financial model workflows</span>
-                <span>Market and buyer research</span>
-                <span>Automation and agent manager</span>
-                <span>Board and LP reporting</span>
-                <span>Permissions and audit logs</span>
-              </div>
-            </section>
-          </div>
-
-          <section class="surface">
-            <div class="surface-header">
-              <div>
-                <h4>Core workflow</h4>
-                <p>The product connects dashboard monitoring, legal review, and portfolio reporting with sample records.</p>
-              </div>
-            </div>
-            <div class="workflow-path">
-              <button data-view-target="dashboard">
-                <strong>1. Fund cockpit</strong>
-                <span>Show mock opportunities, review queues, and workflow activity.</span>
-              </button>
-              <button data-view-target="nda">
-                <strong>2. NDA review</strong>
-                <span>Show a sample clause playbook and suggested edits.</span>
-              </button>
-              <button data-view-target="portfolio">
-                <strong>3. Post-close preview</strong>
-                <span>Show how a mock portfolio record becomes KPI monitoring.</span>
-              </button>
-            </div>
-          </section>
-
-          <section class="surface decision-surface">
-            <div class="surface-header">
-              <div>
-                <h4>Partner decisions needed</h4>
-                <p>Four decisions determine the MVP scope.</p>
-              </div>
-            </div>
-            <div class="decision-grid">
-              <div>
-                <strong>First workflow</strong>
-                <span>NDA review, IM screening, IC memo, or KPI reporting?</span>
-              </div>
-              <div>
-                <strong>Document source</strong>
-                <span>SharePoint, Google Drive, data room, email, or local upload?</span>
-              </div>
-              <div>
-                <strong>Export priority</strong>
-                <span>Word, Excel, PowerPoint, PDF, or all later?</span>
-              </div>
-              <div>
-                <strong>Product direction</strong>
-                <span>Internal tool first, or SaaS-ready from day one?</span>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <section id="dashboard" class="view" aria-labelledby="dashboard-heading">
-          <div class="section-heading">
-            <div>
-              <h3 id="dashboard-heading">Fund operating cockpit</h3>
-              <p>One place for mock opportunities, AI workflow status, partner review items, and post-close monitoring signals.</p>
-            </div>
-            <div class="date-chip">Mock data - May 2026</div>
-          </div>
-
-          <div class="metric-grid">
-            <article class="metric-card">
-              <span class="metric-label">Demo fund size</span>
-              <strong>USD 100m</strong>
-              <span class="metric-note">Mock geography and strategy assumptions</span>
-            </article>
-            <article class="metric-card">
-              <span class="metric-label">Typical check</span>
-              <strong>USD 5-12m</strong>
-              <span class="metric-note">Mock control and growth scenarios</span>
-            </article>
-            <article class="metric-card">
-              <span class="metric-label">Mock opportunities</span>
-              <strong>6</strong>
-              <span class="metric-note">3 need AI review before IC</span>
-            </article>
-            <article class="metric-card">
-              <span class="metric-label">Estimated time saved</span>
-              <strong>12h</strong>
-              <span class="metric-note">Illustrative impact across docs, reviews, and memos</span>
-            </article>
-          </div>
-
-          <div class="dashboard-layout">
-            <section class="surface">
-              <div class="surface-header">
-                <div>
-                  <h4>Opportunity pipeline</h4>
-                  <p>Stage view uses placeholder records only.</p>
-                </div>
-              </div>
-
-              <div class="pipeline-board" aria-label="Opportunity pipeline">
-                <div class="pipeline-column">
-                  <span>Sourced</span>
-                  <button class="deal-tile">
-                    <strong>MockCo Alpha</strong>
-                    <small>B2B services - sample IM received</small>
-                  </button>
-                </div>
-                <div class="pipeline-column">
-                  <span>Screening</span>
-                  <button class="deal-tile is-hot">
-                    <strong>MockCo Beta</strong>
-                    <small>Logistics - AI memo ready</small>
-                  </button>
-                </div>
-                <div class="pipeline-column">
-                  <span>Due Diligence</span>
-                  <button class="deal-tile">
-                    <strong>MockCo Gamma</strong>
-                    <small>Healthcare - Q&A gaps</small>
-                  </button>
-                </div>
-                <div class="pipeline-column">
-                  <span>Documentation</span>
-                  <button class="deal-tile">
-                    <strong>MockCo Delta</strong>
-                    <small>Food processing - SPA draft</small>
-                  </button>
-                </div>
-                <div class="pipeline-column">
-                  <span>Closed</span>
-                  <button class="deal-tile">
-                    <strong>Mock PortCo</strong>
-                    <small>Portfolio monitoring active</small>
-                  </button>
-                </div>
-              </div>
-            </section>
-
-            <section class="surface">
-              <div class="surface-header">
-                <div>
-                  <h4>Partner action queue</h4>
-                  <p>Review items are produced by workflows, not manual chat threads.</p>
-                </div>
-              </div>
-
-              <div class="task-list">
-                <label class="task-row">
-                  <input type="checkbox">
-                  <span>
-                    Approve NDA fallback for MockCo Beta
-                    <small>Legal risk - non-solicit too broad</small>
-                  </span>
-                </label>
-                <label class="task-row">
-                  <input type="checkbox">
-                  <span>
-                    Review sample IC screening memo
-                    <small>AI draft generated from mock IM and meeting notes</small>
-                  </span>
-                </label>
-                <label class="task-row">
-                  <input type="checkbox">
-                  <span>
-                    Validate mock Q2 EBITDA variance commentary
-                    <small>Mock PortCo - actual vs budget below threshold</small>
-                  </span>
-                </label>
-              </div>
-            </section>
-          </div>
-
-          <section class="surface activity-surface">
-            <div class="surface-header">
-              <div>
-                <h4>Automation activity</h4>
-                <p>Every AI output is tied to an opportunity, document, reviewer, and approval state.</p>
-              </div>
-            </div>
-            <ol class="activity-feed" id="activityFeed">
-              <li><span>09:12</span> Mock IM parsed for MockCo Beta. Fit score, risks, and DD questions created.</li>
-              <li><span>09:20</span> Mock NDA reviewed against the sample clause playbook. Three clauses flagged.</li>
-              <li><span>10:05</span> Mock PortCo Q2 KPI pack mapped to standard reporting schema.</li>
-            </ol>
-          </section>
-        </section>
-
-        <section id="nda" class="view" aria-labelledby="nda-heading">
-          <div class="section-heading">
-            <div>
-              <h3 id="nda-heading">NDA review assistant</h3>
-              <p>Mock clause history becomes a repeatable module for faster NDA review.</p>
-            </div>
-            <button class="primary-btn" id="runNdaBtn">Run NDA review</button>
-          </div>
-
-          <div class="two-column wide-left">
-            <section class="surface">
-              <div class="surface-header">
-                <div>
-                  <h4>Sample clause playbook</h4>
-                  <p>This is where mock redlines become a repeatable review standard.</p>
-                </div>
-              </div>
-
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Clause</th>
-                    <th>Preferred position</th>
-                    <th>Default action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Confidentiality term</td>
-                    <td>2-3 years, trade secrets carved out if needed</td>
-                    <td>Shorten if indefinite</td>
-                  </tr>
-                  <tr>
-                    <td>Non-solicit</td>
-                    <td>Limited to named review team and target employees</td>
-                    <td>Narrow scope</td>
-                  </tr>
-                  <tr>
-                    <td>Residual knowledge</td>
-                    <td>No broad residuals that weaken confidentiality</td>
-                    <td>Delete or constrain</td>
-                  </tr>
-                  <tr>
-                    <td>Jurisdiction</td>
-                    <td>Aligned with transaction documents or acceptable neutral venue</td>
-                    <td>Escalate if mismatch</td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section class="surface">
-              <div class="surface-header">
-                <div>
-                  <h4>Review result</h4>
-                  <p>Partner sees what changed, why it matters, and the recommended fallback.</p>
-                </div>
-                <span class="badge warning" id="ndaStatus">3 flags</span>
-              </div>
-
-              <div class="clause-stack" id="clauseStack">
-                <article class="clause-item high">
-                  <div>
-                    <span class="risk-label">High</span>
-                    <h5>Non-solicit too broad</h5>
-                  </div>
-                  <p>Draft restricts hiring across all affiliates for 24 months. The sample policy narrows scope to people directly involved in the process.</p>
-                  <strong>Suggested edit:</strong>
-                  <small>Limit non-solicit to named management and process contacts for 12 months.</small>
-                </article>
-                <article class="clause-item medium">
-                  <div>
-                    <span class="risk-label">Medium</span>
-                    <h5>Indefinite confidentiality term</h5>
-                  </div>
-                  <p>Current language has no sunset for all information. This is acceptable only for trade secrets.</p>
-                  <strong>Suggested edit:</strong>
-                  <small>Set 3-year term for ordinary confidential information.</small>
-                </article>
-                <article class="clause-item medium">
-                  <div>
-                    <span class="risk-label">Medium</span>
-                    <h5>Residual knowledge carve-out</h5>
-                  </div>
-                  <p>Residuals clause could allow use of information remembered by team members.</p>
-                  <strong>Suggested edit:</strong>
-                  <small>Delete clause or constrain it so it cannot override confidentiality duties.</small>
-                </article>
-              </div>
-            </section>
-          </div>
-
-          <section class="surface">
-            <div class="surface-header">
-              <div>
-                <h4>Approval workflow</h4>
-                <p>The legal workflow is intentionally auditable: AI suggests, human approves, precedent improves.</p>
-              </div>
-            </div>
-            <div class="approval-grid">
-              <label class="approval-step">
-                <input type="checkbox" checked>
-                <span>AI clause extraction complete</span>
-              </label>
-              <label class="approval-step">
-                <input type="checkbox" checked>
-                <span>Compared against sample playbook</span>
-              </label>
-              <label class="approval-step">
-                <input type="checkbox">
-                <span>Counsel approves proposed edits</span>
-              </label>
-              <label class="approval-step">
-                <input type="checkbox">
-                <span>Partner signs off fallback position</span>
-              </label>
-            </div>
-          </section>
-        </section>
-
-        <section id="portfolio" class="view" aria-labelledby="portfolio-heading">
-          <div class="section-heading">
-            <div>
-              <h3 id="portfolio-heading">Portfolio monitoring preview</h3>
-              <p>After onboarding, a mock portfolio record supports KPI reporting, variance review, and LP commentary.</p>
-            </div>
-            <span class="badge info">Phase 1 preview</span>
-          </div>
-
-          <div class="portfolio-layout">
-            <section class="surface">
-              <div class="surface-header">
-                <div>
-                  <h4>Mock PortCo - Q2 monitoring</h4>
-                  <p>Sample portfolio company created from mock opportunity data.</p>
-                </div>
-                <span class="status-pill warning">On Watch</span>
-              </div>
-
-              <div class="kpi-visual">
-                <div class="chart-area" aria-label="EBITDA performance chart">
-                  <svg viewBox="0 0 640 260" role="img" aria-label="Actual EBITDA is below budget in Q2">
-                    <defs>
-                      <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0%" stop-color="#F6921E" stop-opacity="0.3"></stop>
-                        <stop offset="100%" stop-color="#F6921E" stop-opacity="0.04"></stop>
-                      </linearGradient>
-                    </defs>
-                    <path d="M40 210 L160 180 L280 150 L400 105 L520 90 L600 70" fill="none" stroke="#F6921E" stroke-width="4"></path>
-                    <path d="M40 220 L160 190 L280 172 L400 150 L520 142 L600 132" fill="none" stroke="#1E253A" stroke-width="4"></path>
-                    <path d="M40 210 L160 180 L280 150 L400 105 L520 90 L600 70 L600 230 L40 230 Z" fill="url(#chartFill)"></path>
-                    <line x1="40" y1="230" x2="600" y2="230" stroke="#c5c9c2"></line>
-                    <text x="42" y="252">Q1</text>
-                    <text x="280" y="252">Q2</text>
-                    <text x="555" y="252">Q4 plan</text>
-                    <text x="440" y="85" class="svg-label">Budget</text>
-                    <text x="438" y="158" class="svg-label warn">Actual</text>
-                  </svg>
-                </div>
-                <div class="variance-box">
-                  <span>AI variance draft</span>
-                  <p>Q2 EBITDA is USD 1.4m vs USD 1.7m budget, a 17.6% shortfall. The mock explanation attributes the gap to delayed enterprise client onboarding and gross margin pressure from legacy contracts. Analyst review is required before LP report inclusion.</p>
-                </div>
-              </div>
-            </section>
-
-            <section class="surface">
-              <div class="surface-header">
-                <div>
-                  <h4>KPI heatmap</h4>
-                  <p>Actual vs budget, prior year, and IC plan.</p>
-                </div>
-              </div>
-
-              <table class="data-table compact">
-                <thead>
-                  <tr>
-                    <th>KPI</th>
-                    <th>Actual</th>
-                    <th>Budget</th>
-                    <th>Flag</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Revenue</td>
-                    <td>USD 8.9m</td>
-                    <td>USD 9.1m</td>
-                    <td><span class="badge success">OK</span></td>
-                  </tr>
-                  <tr>
-                    <td>EBITDA</td>
-                    <td>USD 1.4m</td>
-                    <td>USD 1.7m</td>
-                    <td><span class="badge danger">Watch</span></td>
-                  </tr>
-                  <tr>
-                    <td>Net debt</td>
-                    <td>USD 12.0m</td>
-                    <td>USD 11.6m</td>
-                    <td><span class="badge warning">Check</span></td>
-                  </tr>
-                  <tr>
-                    <td>On-time delivery</td>
-                    <td>94%</td>
-                    <td>93%</td>
-                    <td><span class="badge success">OK</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-          </div>
-
-          <section class="surface">
-            <div class="surface-header">
-              <div>
-                <h4>Future reporting workflow</h4>
-                <p>This is where Phase 2 expands: board packs, valuations, LP reports, and compliance calendar.</p>
-              </div>
-            </div>
-            <div class="report-steps">
-              <span>KPI submission</span>
-              <span>Variance flag</span>
-              <span>Analyst commentary</span>
-              <span>Partner sign-off</span>
-              <span>LP report export</span>
-            </div>
-          </section>
-        </section>
-
-        <section id="modules" class="view" aria-labelledby="modules-heading">
-          <div class="section-heading">
-            <div>
-              <h3 id="modules-heading">Module map</h3>
-              <p>The map shows the full operating system roadmap using mock data. The core NDA and portfolio workflows are the first build priority.</p>
-            </div>
-            <div class="legend">
-              <span><i class="dot core"></i> Core workflow</span>
-              <span><i class="dot phase"></i> Phase 2</span>
-              <span><i class="dot future"></i> Future</span>
-            </div>
-          </div>
-          <div class="module-grid" id="moduleGrid"></div>
-        </section>
-      </main>
+  <body class="bg-offwhite text-gray-900 selection:bg-orange selection:text-white">
+    <div class="gradient-blur hidden lg:block">
+      <div></div><div></div><div></div><div></div><div></div><div></div>
     </div>
 
-    <script src="app.js"></script>
+    <aside class="fixed inset-y-0 left-0 z-50 hidden w-64 flex-col bg-navy p-6 text-white shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:flex">
+      <a href="#overview" class="mb-12 mt-2 flex items-center gap-3 px-2">
+        <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-orange text-xs font-semibold text-navy shadow-sm">BM</div>
+        <div>
+          <div class="mb-0.5 text-[10px] uppercase tracking-[0.22em] text-white/40">Concept</div>
+          <div class="text-sm font-medium leading-none">BoldMind Deal OS</div>
+        </div>
+      </a>
+
+      <nav class="flex-1 space-y-1.5" aria-label="Primary navigation">
+        <a href="#overview" class="group relative flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 px-3 py-2.5 text-white shadow-sm">
+          <div class="absolute left-0 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-orange shadow-[0_0_8px_rgba(246,146,30,0.6)]"></div>
+          <span class="w-4 text-xs font-medium text-orange opacity-90">01</span>
+          <span class="text-sm font-medium">Overview</span>
+        </a>
+        <a href="#dashboard" class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-white/50 transition-all duration-200 hover:bg-white/5 hover:text-white">
+          <span class="w-4 text-xs font-medium transition-colors group-hover:text-white/80">02</span>
+          <span class="text-sm">Dashboard</span>
+        </a>
+        <a href="#nda" class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-white/50 transition-all duration-200 hover:bg-white/5 hover:text-white">
+          <span class="w-4 text-xs font-medium transition-colors group-hover:text-white/80">03</span>
+          <span class="text-sm">NDA Review</span>
+        </a>
+        <a href="#portfolio" class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-white/50 transition-all duration-200 hover:bg-white/5 hover:text-white">
+          <span class="w-4 text-xs font-medium transition-colors group-hover:text-white/80">04</span>
+          <span class="text-sm">Portfolio Preview</span>
+        </a>
+        <a href="#modules" class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-white/50 transition-all duration-200 hover:bg-white/5 hover:text-white">
+          <span class="w-4 text-xs font-medium transition-colors group-hover:text-white/80">05</span>
+          <span class="text-sm">Module Map</span>
+        </a>
+      </nav>
+
+      <div class="mt-auto">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs leading-relaxed text-white/55">
+          PE-specific AI operating system for investment review and portfolio workflows.
+          <div class="mt-3 inline-block rounded border border-orange/20 bg-orange/10 px-2 py-1 text-[10px] font-medium text-orange">Concept build</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-h-screen w-full pb-24 lg:ml-64">
+      <header class="sticky top-0 z-40 flex flex-col gap-4 border-b border-gray-200/50 bg-offwhite/80 px-6 py-6 backdrop-blur-md sm:flex-row sm:items-end sm:justify-between lg:border-none lg:bg-transparent lg:px-10 lg:backdrop-blur-none">
+        <div class="gsap-header-item">
+          <p class="mb-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-gray-400">Demo workspace</p>
+          <h1 class="text-xl font-semibold tracking-tight text-gray-900">BoldMind Deal OS</h1>
+        </div>
+        <nav class="flex flex-wrap gap-2 text-xs lg:hidden" aria-label="Mobile navigation">
+          <a class="rounded-full bg-navy px-3 py-2 text-white" href="#overview">Overview</a>
+          <a class="rounded-full bg-white px-3 py-2 text-gray-700 shadow-sm" href="#dashboard">Dashboard</a>
+          <a class="rounded-full bg-white px-3 py-2 text-gray-700 shadow-sm" href="#nda">NDA</a>
+          <a class="rounded-full bg-white px-3 py-2 text-gray-700 shadow-sm" href="#modules">Modules</a>
+        </nav>
+        <div class="hidden gap-3 sm:flex gsap-header-item">
+          <a href="#modules" class="rounded-xl border border-gray-200/80 bg-white px-4 py-2 text-xs font-medium text-gray-700 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] transition-colors duration-200 hover:bg-gray-50">
+            View modules
+          </a>
+          <a href="#dashboard" class="rounded-xl bg-navy px-4 py-2 text-xs font-medium text-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] transition-colors duration-200 hover:bg-gray-900">
+            Open dashboard
+          </a>
+        </div>
+      </header>
+
+      <section id="overview" class="mx-6 mt-2 flex scroll-mt-24 flex-col gap-12 overflow-hidden rounded-[32px] bg-navy p-8 text-white shadow-[0_2.8px_2.2px_rgba(0,0,0,0.034),0_6.7px_5.3px_rgba(0,0,0,0.048),0_12.5px_10px_rgba(0,0,0,0.06),0_22.3px_17.9px_rgba(0,0,0,0.072),0_41.8px_33.4px_rgba(0,0,0,0.086),0_100px_80px_rgba(0,0,0,0.12)] lg:mx-10 lg:flex-row lg:p-14">
+        <div class="z-10 flex flex-1 flex-col justify-center">
+          <p class="hero-element mb-5 text-[10px] font-medium uppercase tracking-[0.22em] text-white/40">Product concept</p>
+          <h2 class="masked-reveal mb-6 max-w-2xl text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[44px]">
+            A private equity operating system shown with mock data only.
+          </h2>
+          <p class="hero-element mb-10 max-w-xl text-[15px] font-normal leading-relaxed text-white/60">
+            Built to replace manual AI chat loops with structured reviews, approval controls, and reusable fund knowledge.
+          </p>
+          <div class="hero-element flex flex-wrap gap-3">
+            <a href="#dashboard" class="rounded-xl bg-white px-5 py-2.5 text-sm font-medium text-navy shadow-sm transition-colors hover:bg-gray-100">Open dashboard</a>
+            <a href="#nda" class="rounded-xl border border-white/10 bg-transparent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/5">Review NDA module</a>
+          </div>
+        </div>
+
+        <div class="hero-element z-10 w-full shrink-0 lg:w-[420px]">
+          <div class="flex h-full flex-col rounded-[24px] border border-white/10 bg-white/[0.03] p-6 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
+            <div class="mb-6 self-start rounded-full border border-white/5 bg-white/5 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wide text-white/60">Mock data only</div>
+            <div class="grid flex-1 grid-cols-2 gap-3">
+              <div class="flex flex-col justify-center rounded-2xl border border-white/5 bg-white/5 p-5 transition-colors duration-300 hover:bg-white/10">
+                <div class="mb-1 text-3xl font-semibold tracking-tight text-orange">3</div>
+                <div class="text-xs font-medium text-white/50">Interactive sections</div>
+              </div>
+              <div class="flex flex-col justify-center rounded-2xl border border-white/5 bg-white/5 p-5 transition-colors duration-300 hover:bg-white/10">
+                <div class="mb-1 text-3xl font-semibold tracking-tight text-white">20</div>
+                <div class="text-xs font-medium text-white/50">Mapped modules</div>
+              </div>
+              <div class="col-span-2 flex flex-col justify-center rounded-2xl border border-white/5 bg-white/5 p-5 transition-colors duration-300 hover:bg-white/10">
+                <div class="mb-1 text-3xl font-semibold tracking-tight text-white">1</div>
+                <div class="text-xs font-medium text-white/50">Implementation path</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="dashboard" class="gsap-stagger-section mx-6 mt-8 grid scroll-mt-24 grid-cols-1 gap-6 lg:mx-10 lg:grid-cols-3">
+        <div class="rounded-3xl bg-orange p-8 text-white shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:p-10">
+          <div class="mb-16 inline-flex rounded-full border border-white/20 px-3 py-1 text-sm font-semibold opacity-90">01</div>
+          <p class="mt-auto text-base font-medium leading-relaxed tracking-tight lg:text-[17px]">
+            Mock opportunity intake, screening signals, and approval queues sit in one operating cockpit.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-navy p-8 text-white shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:p-10">
+          <div class="mb-16 inline-flex rounded-full border border-white/10 px-3 py-1 text-sm font-semibold opacity-50">02</div>
+          <p class="mt-auto text-base font-medium leading-relaxed tracking-tight text-white/90 lg:text-[17px]">
+            Review tasks stay attached to a sample document, owner, deadline, and approval state.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-softgrey p-8 text-gray-900 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:p-10">
+          <div class="mb-16 inline-flex rounded-full border border-gray-900/10 px-3 py-1 text-sm font-semibold opacity-40">03</div>
+          <p class="mt-auto text-base font-medium leading-relaxed tracking-tight text-gray-800 lg:text-[17px]">
+            KPI packs, variance commentary, and reporting exports can be previewed without using real portfolio data.
+          </p>
+        </div>
+      </section>
+
+      <section class="gsap-stagger-section mx-6 mt-8 grid grid-cols-1 gap-6 lg:mx-10 lg:grid-cols-2">
+        <div class="rounded-3xl bg-white p-8 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
+          <h3 class="mb-1.5 text-lg font-semibold tracking-tight text-gray-900">Core capabilities</h3>
+          <p class="mb-8 text-[13px] font-medium text-gray-500">The first build focuses on review queues, legal review, and post-close monitoring.</p>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div class="flex items-center gap-2 rounded-xl border border-gray-100/80 bg-offwhite p-4 text-[13px] font-medium text-gray-700"><span class="h-1.5 w-1.5 rounded-full bg-navy/20"></span>Mock pipeline dashboard</div>
+            <div class="flex items-center gap-2 rounded-xl border border-gray-100/80 bg-offwhite p-4 text-[13px] font-medium text-gray-700"><span class="h-1.5 w-1.5 rounded-full bg-navy/20"></span>Document review queue</div>
+            <div class="flex items-center gap-2 rounded-xl border border-gray-100/80 bg-offwhite p-4 text-[13px] font-medium text-gray-700"><span class="h-1.5 w-1.5 rounded-full bg-navy/20"></span>AI screening signals</div>
+            <div class="flex items-center gap-2 rounded-xl border border-gray-100/80 bg-offwhite p-4 text-[13px] font-medium text-gray-700"><span class="h-1.5 w-1.5 rounded-full bg-navy/20"></span>Approval task tracking</div>
+            <div class="flex items-center gap-2 rounded-xl border border-gray-100/80 bg-offwhite p-4 text-[13px] font-medium text-gray-700"><span class="h-1.5 w-1.5 rounded-full bg-navy/20"></span>NDA clause review</div>
+            <div class="flex items-center gap-2 rounded-xl border border-gray-100/80 bg-offwhite p-4 text-[13px] font-medium text-gray-700"><span class="h-1.5 w-1.5 rounded-full bg-navy/20"></span>Portfolio KPI preview</div>
+          </div>
+        </div>
+
+        <div id="modules" class="scroll-mt-24 rounded-3xl bg-white p-8 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
+          <h3 class="mb-1.5 text-lg font-semibold tracking-tight text-gray-900">Upcoming modules</h3>
+          <p class="mb-8 text-[13px] font-medium text-gray-500">These modules extend the platform after the first workflow is validated.</p>
+          <div class="grid grid-cols-1 gap-3 opacity-75 sm:grid-cols-2">
+            <div class="rounded-xl border border-dashed border-gray-200 p-4 text-[13px] font-medium text-gray-500">CRM and stakeholder graph</div>
+            <div class="rounded-xl border border-dashed border-gray-200 p-4 text-[13px] font-medium text-gray-500">Financial model workflows</div>
+            <div class="rounded-xl border border-dashed border-gray-200 p-4 text-[13px] font-medium text-gray-500">Market and buyer research</div>
+            <div class="rounded-xl border border-dashed border-gray-200 p-4 text-[13px] font-medium text-gray-500">Automation and agent manager</div>
+            <div class="rounded-xl border border-dashed border-gray-200 p-4 text-[13px] font-medium text-gray-500">Board and LP reporting</div>
+            <div class="rounded-xl border border-dashed border-gray-200 p-4 text-[13px] font-medium text-gray-500">Permissions and audit logs</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="nda" class="gsap-stagger-section mx-6 mt-8 scroll-mt-24 rounded-3xl bg-white p-8 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:mx-10">
+        <h3 class="mb-1.5 text-lg font-semibold tracking-tight text-gray-900">Sample NDA review</h3>
+        <p class="mb-6 text-[13px] font-medium text-gray-500">Mock clause history becomes a repeatable standard for faster review.</p>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-gray-100 bg-offwhite/70 p-5">
+            <h4 class="mb-1.5 text-[13px] font-semibold text-gray-900">Non-solicit scope</h4>
+            <p class="text-[13px] leading-relaxed text-gray-500">Limit the restriction to named management and process contacts for 12 months.</p>
+          </div>
+          <div class="rounded-2xl border border-gray-100 bg-offwhite/70 p-5">
+            <h4 class="mb-1.5 text-[13px] font-semibold text-gray-900">Confidentiality term</h4>
+            <p class="text-[13px] leading-relaxed text-gray-500">Use a 3-year term for ordinary information, with trade secret exceptions if needed.</p>
+          </div>
+          <div class="rounded-2xl border border-gray-100 bg-offwhite/70 p-5">
+            <h4 class="mb-1.5 text-[13px] font-semibold text-gray-900">Residual knowledge</h4>
+            <p class="text-[13px] leading-relaxed text-gray-500">Delete broad residual language or constrain it so confidentiality duties remain intact.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="gsap-stagger-section mx-6 mt-8 scroll-mt-24 rounded-3xl bg-white p-8 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:mx-10">
+        <h3 class="mb-1.5 text-lg font-semibold tracking-tight text-gray-900">Mock portfolio preview</h3>
+        <p class="mb-6 text-[13px] font-medium text-gray-500">Sample KPI packs and variance commentary without real portfolio records.</p>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+          <div class="rounded-2xl bg-offwhite p-5"><span class="text-xs text-gray-500">Revenue</span><strong class="mt-1 block text-2xl text-navy">USD 8.9m</strong></div>
+          <div class="rounded-2xl bg-offwhite p-5"><span class="text-xs text-gray-500">EBITDA</span><strong class="mt-1 block text-2xl text-navy">USD 1.4m</strong></div>
+          <div class="rounded-2xl bg-offwhite p-5"><span class="text-xs text-gray-500">Net debt</span><strong class="mt-1 block text-2xl text-navy">USD 12.0m</strong></div>
+          <div class="rounded-2xl bg-orange p-5 text-navy"><span class="text-xs text-navy/70">Status</span><strong class="mt-1 block text-2xl">Watch</strong></div>
+        </div>
+      </section>
+
+      <section class="gsap-stagger-section mx-6 mb-12 mt-8 rounded-3xl bg-white p-8 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:mx-10">
+        <h3 class="mb-1.5 text-lg font-semibold tracking-tight text-gray-900">Partner decisions needed</h3>
+        <p class="mb-8 text-[13px] font-medium text-gray-500">Four decisions determine the MVP scope.</p>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-2xl border border-gray-100 bg-offwhite/50 p-5">
+            <div class="mb-4 flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-xs font-semibold text-gray-400 shadow-sm">1</div>
+            <h4 class="mb-1.5 text-[13px] font-semibold text-gray-900">First workflow</h4>
+            <p class="text-[13px] leading-relaxed text-gray-500">NDA review, IM screening, IC memo, or KPI reporting?</p>
+          </div>
+          <div class="rounded-2xl border border-gray-100 bg-offwhite/50 p-5">
+            <div class="mb-4 flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-xs font-semibold text-gray-400 shadow-sm">2</div>
+            <h4 class="mb-1.5 text-[13px] font-semibold text-gray-900">Document source</h4>
+            <p class="text-[13px] leading-relaxed text-gray-500">SharePoint, Google Drive, data room, email, or local upload?</p>
+          </div>
+          <div class="rounded-2xl border border-gray-100 bg-offwhite/50 p-5">
+            <div class="mb-4 flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-xs font-semibold text-gray-400 shadow-sm">3</div>
+            <h4 class="mb-1.5 text-[13px] font-semibold text-gray-900">Export priority</h4>
+            <p class="text-[13px] leading-relaxed text-gray-500">Word, Excel, PowerPoint, PDF, or all later?</p>
+          </div>
+          <div class="rounded-2xl border border-gray-100 bg-offwhite/50 p-5">
+            <div class="mb-4 flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-xs font-semibold text-gray-400 shadow-sm">4</div>
+            <h4 class="mb-1.5 text-[13px] font-semibold text-gray-900">Product direction</h4>
+            <p class="text-[13px] leading-relaxed text-gray-500">Internal tool first, or SaaS-ready from day one?</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (!window.gsap) return;
+
+        if (window.ScrollTrigger) {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+
+        document.querySelectorAll(".masked-reveal").forEach((element) => {
+          const words = element.textContent.trim().split(" ");
+          element.textContent = "";
+
+          words.forEach((word, index) => {
+            const mask = document.createElement("span");
+            mask.style.display = "inline-block";
+            mask.style.overflow = "hidden";
+            mask.style.verticalAlign = "top";
+            mask.style.marginRight = index < words.length - 1 ? "0.25em" : "0";
+            mask.style.paddingBottom = "0.1em";
+
+            const inner = document.createElement("span");
+            inner.style.display = "inline-block";
+            inner.textContent = word;
+            inner.className = "reveal-inner-word";
+
+            mask.appendChild(inner);
+            element.appendChild(mask);
+          });
+        });
+
+        gsap.fromTo(
+          ".reveal-inner-word",
+          { y: "120%", rotation: 2 },
+          { y: "0%", rotation: 0, duration: 0.8, stagger: 0.015, ease: "power3.out", delay: 0.2 }
+        );
+
+        const timeline = gsap.timeline();
+        timeline.fromTo(
+          ".gsap-header-item",
+          { y: -10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
+          0
+        );
+        timeline.fromTo(
+          ".hero-element",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out" },
+          0.4
+        );
+
+        gsap.fromTo(
+          "aside nav a",
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out", delay: 0.2 }
+        );
+
+        gsap.utils.toArray(".gsap-stagger-section").forEach((section) => {
+          gsap.fromTo(
+            section.children,
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: "power3.out",
+              scrollTrigger: window.ScrollTrigger
+                ? {
+                    trigger: section,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                  }
+                : undefined
+            }
+          );
+        });
+      });
+    </script>
   </body>
 </html>
