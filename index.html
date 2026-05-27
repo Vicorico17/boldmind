@@ -84,17 +84,21 @@
         min-width: 0;
       }
 
-      .brand-mark {
+      .brand-logo {
         display: grid;
         place-items: center;
-        flex: 0 0 34px;
-        width: 34px;
-        height: 34px;
+        flex: 0 0 96px;
+        width: 96px;
+        min-height: 34px;
+        padding: 7px 9px;
         border-radius: 8px;
-        background: var(--orange);
-        color: var(--navy);
-        font-size: 0.76rem;
-        font-weight: 800;
+        background: #fff;
+      }
+
+      .brand-logo img {
+        display: block;
+        width: 100%;
+        height: auto;
       }
 
       .brand-kicker,
@@ -945,7 +949,9 @@
     <div class="app">
       <aside class="sidebar" aria-label="Primary navigation">
         <div class="brand">
-          <div class="brand-mark">BM</div>
+          <div class="brand-logo">
+            <img src="https://boldmindcapital.com/images/logo.svg" alt="BoldMind Capital">
+          </div>
           <div>
             <p class="brand-kicker">Concept</p>
             <h1>BoldMind Deal OS</h1>
@@ -977,7 +983,7 @@
 
         <div class="sidebar-note">
           BOLDMIND OS
-          <span class="concept-pill">Concept build</span>
+          <span class="concept-pill">DEMOS</span>
         </div>
       </aside>
 
