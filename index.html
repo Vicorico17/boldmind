@@ -759,6 +759,14 @@
         font-size: 1.55rem;
       }
 
+      .kpi-period {
+        display: block;
+        margin: -4px 0 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
       .severity-badge {
         display: inline-flex;
         align-items: center;
@@ -1294,31 +1302,33 @@
             <article class="kpi">
               <div class="kpi-top">
                 <span class="metric-label">Revenue</span>
-                <span class="severity-badge red">High</span>
+                <span class="severity-badge green">Healthy</span>
               </div>
-              <strong>USD 8.9m</strong>
+              <strong>Q1'26: USD 2.0m</strong>
+              <span class="kpi-period">Segment X led the quarter</span>
               <div class="variance-lines">
-                <span class="variance down"><span>&darr; -15% vs Budget</span></span>
-                <span class="variance down"><span>&darr; -10% vs PY</span></span>
+                <span class="variance up"><span>&uarr; +2% vs Budget</span></span>
+                <span class="variance up"><span>&uarr; +10% vs PY</span></span>
               </div>
               <svg class="sparkline" viewBox="0 0 160 42" aria-hidden="true" focusable="false">
                 <path class="axis" d="M4 26 H156"></path>
-                <polyline class="red" points="4,12 30,14 56,20 82,19 108,27 132,30 156,35"></polyline>
+                <polyline class="green" points="4,34 30,31 56,29 82,23 108,21 132,15 156,10"></polyline>
               </svg>
             </article>
             <article class="kpi">
               <div class="kpi-top">
                 <span class="metric-label">EBITDA</span>
-                <span class="severity-badge red">High</span>
+                <span class="severity-badge amber">Watch</span>
               </div>
-              <strong>USD 1.4m</strong>
+              <strong>Q1'26: USD 0.4m</strong>
+              <span class="kpi-period">Margin mix below plan</span>
               <div class="variance-lines">
-                <span class="variance down"><span>&darr; -22% vs Budget</span></span>
-                <span class="variance down"><span>&darr; -18% vs PY</span></span>
+                <span class="variance down"><span>&darr; -6% vs Budget</span></span>
+                <span class="variance up"><span>&uarr; +5% vs PY</span></span>
               </div>
               <svg class="sparkline" viewBox="0 0 160 42" aria-hidden="true" focusable="false">
                 <path class="axis" d="M4 24 H156"></path>
-                <polyline class="red" points="4,10 30,13 56,18 82,24 108,29 132,31 156,36"></polyline>
+                <polyline class="amber" points="4,30 30,27 56,24 82,20 108,23 132,18 156,17"></polyline>
               </svg>
             </article>
             <article class="kpi">
@@ -1326,7 +1336,8 @@
                 <span class="metric-label">Net debt</span>
                 <span class="severity-badge amber">Medium</span>
               </div>
-              <strong>USD 12.0m</strong>
+              <strong>Q1'26: USD 12.0m</strong>
+              <span class="kpi-period">Receivables still elevated</span>
               <div class="variance-lines">
                 <span class="variance adverse"><span>&uarr; +8% vs Budget</span></span>
                 <span class="variance adverse"><span>&uarr; +14% vs PY</span></span>
@@ -1341,7 +1352,8 @@
                 <span class="metric-label">Cash conversion</span>
                 <span class="severity-badge amber">Medium</span>
               </div>
-              <strong>64%</strong>
+              <strong>Q1'26: 64%</strong>
+              <span class="kpi-period">Collections lag budget</span>
               <div class="variance-lines">
                 <span class="variance down"><span>&darr; -12pts vs Budget</span></span>
                 <span class="variance down"><span>&darr; -8pts vs PY</span></span>
@@ -1363,26 +1375,26 @@
             <div class="variance-note" id="varianceNote">
               <article class="note-block">
                 <strong>What changed</strong>
-                <p>Revenue is 15% below budget and EBITDA is 22% below budget. Net debt is 8% above plan while cash conversion fell to 64%.</p>
+                <p>Revenue reached USD 2.0m in Q1'26, 2% above budget and 10% above prior year. Segment X was the main positive driver.</p>
               </article>
               <article class="note-block">
                 <strong>Why it changed</strong>
-                <p>Management attributes the gap to delayed enterprise onboarding, lower renewal expansion, and margin pressure from legacy service contracts.</p>
+                <p>Segment X improved 3% versus budget after two enterprise customers expanded usage earlier than planned. Segment Y stayed flat.</p>
               </article>
               <article class="note-block">
                 <strong>Key risks</strong>
-                <p>The current run-rate may pressure covenant headroom if Q3 bookings do not recover and working-capital discipline remains weak.</p>
+                <p>EBITDA is still 6% below budget because the mix shifted toward lower-margin implementation revenue and receivables remain elevated.</p>
               </article>
               <article class="note-block">
                 <strong>Assumptions</strong>
-                <p>The full-year budget still assumes a Q3 rebound. That looks aggressive unless signed pipeline converts within the next 45 days.</p>
+                <p>The revenue plan looks realistic if Segment X retention holds, but margin recovery depends on moving implementation work into recurring contracts.</p>
               </article>
               <article class="note-block wide">
                 <strong>Follow-up questions</strong>
                 <ul>
-                  <li>Which delayed customers have signed implementation dates?</li>
-                  <li>What cost actions protect EBITDA if revenue stays 10% below plan?</li>
-                  <li>How much cash is tied up in overdue receivables?</li>
+                  <li>Which Segment X customers drove the 3% outperformance?</li>
+                  <li>How much of the Q1 revenue uplift is recurring versus implementation revenue?</li>
+                  <li>What collection actions bring cash conversion back to budget?</li>
                 </ul>
               </article>
             </div>
@@ -1399,7 +1411,7 @@
           <div class="module-grid">
             <article class="module"><span class="badge success">Core</span><strong>Opportunity Pipeline</strong><span>Tracks opportunities through configurable stage gates.</span></article>
             <article class="module"><span class="badge success">Core</span><strong>NDA Review Assistant</strong><span>Turns clause history into repeatable legal review.</span></article>
-            <article class="module"><span class="badge success">Core</span><strong>Portfolio Monitoring</strong><span>Previews KPI packs, variance flags, and reporting commentary.</span></article>
+            <article class="module"><span class="badge success">Core</span><strong>Portfolio Monitoring</strong><span>Shows Q1'26 KPI cards with vs Budget, vs PY, severity, trendlines, and AI variance notes by segment.</span></article>
             <article class="module"><span class="badge">Phase 2</span><strong>CRM and Stakeholders</strong><span>Maps advisors, founders, lenders, and review owners to records.</span></article>
             <article class="module"><span class="badge">Phase 2</span><strong>Financial Modeling</strong><span>Supports assumptions, scenarios, and Excel-ready data structures.</span></article>
             <article class="module"><span class="badge">Phase 2</span><strong>Market Research</strong><span>Structures sector maps, comparable companies, and buyer research.</span></article>
@@ -1484,26 +1496,26 @@
         document.getElementById("varianceNote").innerHTML = `
           <article class="note-block">
             <strong>What changed</strong>
-            <p>Revenue stayed 15% below budget for a second month and EBITDA deleveraged faster than revenue, pointing to fixed-cost absorption rather than one isolated miss.</p>
+            <p>Revenue reached USD 2.0m in Q1'26, 2% above budget and 10% above prior year. Segment X contributed most of the upside.</p>
           </article>
           <article class="note-block">
             <strong>Why it changed</strong>
-            <p>The latest update points to two enterprise go-lives slipping into Q3, weaker upsell conversion, and legacy contracts renewing at lower gross margin.</p>
+            <p>Segment X improved 3% versus budget after two enterprise accounts expanded usage earlier than planned, while Segment Y stayed broadly flat.</p>
           </article>
           <article class="note-block">
             <strong>Key risks</strong>
-            <p>Covenant headroom and lender confidence become the immediate risks if bookings do not recover before the next reporting cycle.</p>
+            <p>EBITDA is still 6% below budget because growth came with lower-margin implementation work and slower receivables collection.</p>
           </article>
           <article class="note-block">
             <strong>Assumptions</strong>
-            <p>Management's Q3 recovery case is still possible, but it depends on signed pipeline converting within 45 days and a faster receivables clean-up.</p>
+            <p>Management's revenue case looks supportable if Segment X retention holds, but margin recovery requires shifting the new work into recurring contracts.</p>
           </article>
           <article class="note-block wide">
             <strong>Follow-up questions</strong>
             <ul>
-              <li>Which Q3 pipeline deals are contractually committed versus verbal?</li>
-              <li>What immediate cost levers can offset another month of revenue delay?</li>
-              <li>Which customers drive the receivables build and what collection dates are confirmed?</li>
+              <li>Which Segment X customers drove the 3% outperformance?</li>
+              <li>How much of the Q1 revenue uplift is recurring versus implementation revenue?</li>
+              <li>What collection actions bring cash conversion back to budget?</li>
             </ul>
           </article>
         `;
