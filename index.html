@@ -404,8 +404,7 @@
       .pillar-grid,
       .two-grid,
       .metric-grid,
-      .module-grid,
-      .decision-grid {
+      .module-grid {
         display: grid;
         gap: 18px;
       }
@@ -501,7 +500,6 @@
 
       .feature,
       .module,
-      .decision,
       .clause,
       .kpi {
         border: 1px solid rgba(226, 224, 218, 0.9);
@@ -578,7 +576,7 @@
 
       .dashboard-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.75fr);
+        grid-template-columns: minmax(0, 1fr);
         gap: 20px;
         margin-top: 20px;
       }
@@ -645,39 +643,9 @@
         line-height: 1.35;
       }
 
-      .task-list,
       .activity-list {
         display: grid;
         gap: 10px;
-      }
-
-      .task-row {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        min-height: 66px;
-        padding: 13px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: #fff;
-        box-shadow: 0 4px 10px rgba(30, 37, 58, 0.04);
-      }
-
-      .task-row input {
-        width: 18px;
-        height: 18px;
-        margin-top: 2px;
-        accent-color: var(--orange);
-      }
-
-      .task-row span,
-      .task-row small {
-        display: block;
-      }
-
-      .task-row small {
-        margin-top: 4px;
-        color: var(--muted);
       }
 
       .activity-list {
@@ -771,48 +739,152 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
+      .kpi {
+        display: grid;
+        align-content: space-between;
+        gap: 14px;
+        min-height: 230px;
+        background: #fff;
+      }
+
+      .kpi-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
       .kpi strong {
         margin: 6px 0 0;
         font-size: 1.55rem;
       }
 
-      .kpi.orange {
-        color: var(--navy);
-        background: var(--orange);
-      }
-
-      .decision-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .decision {
-        min-height: 156px;
-        padding: 18px;
-      }
-
-      .decision-index {
-        display: grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        margin-bottom: 18px;
-        border: 1px solid var(--line);
+      .severity-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        padding: 5px 8px;
         border-radius: 999px;
-        background: #fff;
-        color: var(--muted);
-        font-size: 0.75rem;
+        font-size: 0.68rem;
         font-weight: 800;
       }
 
-      .decision strong,
-      .decision span {
-        display: block;
+      .severity-badge::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        margin-right: 6px;
+        border-radius: 999px;
+        background: currentColor;
       }
 
-      .decision span {
-        margin-top: 7px;
+      .severity-badge.red {
+        color: #8a1f11;
+        background: #ffe0d7;
+      }
+
+      .severity-badge.amber {
+        color: #704800;
+        background: #ffe7b8;
+      }
+
+      .severity-badge.green {
+        color: #1d6840;
+        background: #dff3e8;
+      }
+
+      .variance-lines {
+        display: grid;
+        gap: 7px;
+      }
+
+      .variance {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        min-height: 30px;
+        padding: 7px 9px;
+        border-radius: 10px;
+        background: var(--paper);
+        color: #3b4150;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      .variance.down,
+      .variance.adverse {
+        color: #a33422;
+      }
+
+      .variance.up,
+      .variance.favorable {
+        color: #1f7a4b;
+      }
+
+      .sparkline {
+        width: 100%;
+        height: 42px;
+      }
+
+      .sparkline path,
+      .sparkline polyline {
+        fill: none;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .sparkline .axis {
+        stroke: #e2e0da;
+        stroke-width: 2;
+      }
+
+      .sparkline .red {
+        stroke: #d34a32;
+      }
+
+      .sparkline .amber {
+        stroke: #c98418;
+      }
+
+      .sparkline .green {
+        stroke: #2e9960;
+      }
+
+      .variance-note {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .note-block {
+        min-height: 140px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--paper);
+      }
+
+      .note-block.wide {
+        grid-column: 1 / -1;
+      }
+
+      .note-block strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--navy);
+      }
+
+      .note-block p,
+      .note-block ul {
+        margin: 0;
         color: var(--muted);
         line-height: 1.45;
+      }
+
+      .note-block ul {
+        padding-left: 18px;
       }
 
       .toast {
@@ -877,7 +949,7 @@
 
         .metric-grid,
         .module-grid,
-        .decision-grid {
+        .variance-note {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
@@ -922,7 +994,7 @@
         .metric-grid,
         .feature-grid,
         .module-grid,
-        .decision-grid,
+        .variance-note,
         .clause-grid,
         .kpi-grid {
           grid-template-columns: 1fr;
@@ -1046,17 +1118,17 @@
             </article>
             <article class="pillar grey">
               <span class="pillar-number">03</span>
-              <p>Portfolio previews turn KPI packs into variance commentary, review queues, and reporting outputs.</p>
+              <p>Portfolio previews turn KPI packs into variance commentary, review signals, and reporting outputs.</p>
             </article>
           </div>
 
           <div class="two-grid">
             <section class="section-card">
               <h4>Core capabilities</h4>
-              <p>The first build focuses on review queues, legal review, and post-close monitoring.</p>
+              <p>The first build focuses on review workflows, legal review, and post-close monitoring.</p>
               <div class="feature-grid" style="margin-top: 22px;">
                 <div class="feature">Pipeline dashboard</div>
-                <div class="feature">Document review queue</div>
+                <div class="feature">Document review workflow</div>
                 <div class="feature">AI screening signals</div>
                 <div class="feature">Approval task tracking</div>
                 <div class="feature">NDA clause review</div>
@@ -1083,10 +1155,9 @@
           <div class="section-heading">
             <div>
               <h3 id="dashboard-heading">Fund operating cockpit</h3>
-              <p>One place for opportunities, AI workflow status, partner review items, and post-close monitoring signals.</p>
+              <p>One place for opportunities, AI workflow status, automation activity, and post-close monitoring signals.</p>
             </div>
             <div class="section-actions">
-              <button class="btn btn-secondary" type="button" id="resetTasksBtn">Reset checks</button>
               <button class="btn btn-primary" type="button" id="runReviewBtn">Run review</button>
             </div>
           </div>
@@ -1161,38 +1232,6 @@
                 </div>
               </div>
             </section>
-
-            <section class="surface">
-              <div class="section-heading">
-                <div>
-                  <h3>Partner action queue</h3>
-                  <p>Review items are produced by workflows.</p>
-                </div>
-              </div>
-              <div class="task-list">
-                <label class="task-row">
-                  <input type="checkbox">
-                  <span>
-                    Approve NDA fallback for BetaCo
-                    <small>Legal risk - non-solicit too broad</small>
-                  </span>
-                </label>
-                <label class="task-row">
-                  <input type="checkbox">
-                  <span>
-                    Review screening memo
-                    <small>AI draft generated from memo and meeting notes</small>
-                  </span>
-                </label>
-                <label class="task-row">
-                  <input type="checkbox">
-                  <span>
-                    Validate Q2 EBITDA commentary
-                    <small>PortfolioCo - actual vs budget below threshold</small>
-                  </span>
-                </label>
-              </div>
-            </section>
           </div>
 
           <section class="surface" style="margin-top: 20px;">
@@ -1246,32 +1285,107 @@
         <section class="view" id="portfolio" aria-labelledby="portfolio-heading">
           <div class="section-heading">
             <div>
-              <h3 id="portfolio-heading">Portfolio monitoring preview</h3>
+              <h3 id="portfolio-heading">Portfolio monitoring</h3>
               <p>KPI packs, variance commentary, and review states in one monitoring view.</p>
             </div>
-            <button class="btn btn-primary" type="button" id="draftVarianceBtn">Draft variance note</button>
+            <button class="btn btn-primary" type="button" id="draftVarianceBtn">Refresh AI note</button>
           </div>
           <div class="kpi-grid">
             <article class="kpi">
-              <span class="metric-label">Revenue</span>
+              <div class="kpi-top">
+                <span class="metric-label">Revenue</span>
+                <span class="severity-badge red">High</span>
+              </div>
               <strong>USD 8.9m</strong>
+              <div class="variance-lines">
+                <span class="variance down"><span>&darr; -15% vs Budget</span></span>
+                <span class="variance down"><span>&darr; -10% vs PY</span></span>
+              </div>
+              <svg class="sparkline" viewBox="0 0 160 42" aria-hidden="true" focusable="false">
+                <path class="axis" d="M4 26 H156"></path>
+                <polyline class="red" points="4,12 30,14 56,20 82,19 108,27 132,30 156,35"></polyline>
+              </svg>
             </article>
             <article class="kpi">
-              <span class="metric-label">EBITDA</span>
+              <div class="kpi-top">
+                <span class="metric-label">EBITDA</span>
+                <span class="severity-badge red">High</span>
+              </div>
               <strong>USD 1.4m</strong>
+              <div class="variance-lines">
+                <span class="variance down"><span>&darr; -22% vs Budget</span></span>
+                <span class="variance down"><span>&darr; -18% vs PY</span></span>
+              </div>
+              <svg class="sparkline" viewBox="0 0 160 42" aria-hidden="true" focusable="false">
+                <path class="axis" d="M4 24 H156"></path>
+                <polyline class="red" points="4,10 30,13 56,18 82,24 108,29 132,31 156,36"></polyline>
+              </svg>
             </article>
             <article class="kpi">
-              <span class="metric-label">Net debt</span>
+              <div class="kpi-top">
+                <span class="metric-label">Net debt</span>
+                <span class="severity-badge amber">Medium</span>
+              </div>
               <strong>USD 12.0m</strong>
+              <div class="variance-lines">
+                <span class="variance adverse"><span>&uarr; +8% vs Budget</span></span>
+                <span class="variance adverse"><span>&uarr; +14% vs PY</span></span>
+              </div>
+              <svg class="sparkline" viewBox="0 0 160 42" aria-hidden="true" focusable="false">
+                <path class="axis" d="M4 24 H156"></path>
+                <polyline class="amber" points="4,32 30,29 56,27 82,22 108,20 132,17 156,13"></polyline>
+              </svg>
             </article>
-            <article class="kpi orange">
-              <span class="metric-label">Status</span>
-              <strong>Watch</strong>
+            <article class="kpi">
+              <div class="kpi-top">
+                <span class="metric-label">Cash conversion</span>
+                <span class="severity-badge amber">Medium</span>
+              </div>
+              <strong>64%</strong>
+              <div class="variance-lines">
+                <span class="variance down"><span>&darr; -12pts vs Budget</span></span>
+                <span class="variance down"><span>&darr; -8pts vs PY</span></span>
+              </div>
+              <svg class="sparkline" viewBox="0 0 160 42" aria-hidden="true" focusable="false">
+                <path class="axis" d="M4 25 H156"></path>
+                <polyline class="amber" points="4,14 30,16 56,18 82,15 108,24 132,29 156,31"></polyline>
+              </svg>
             </article>
           </div>
           <section class="surface" style="margin-top: 20px;">
-            <h3 style="margin-top: 0;">Variance note</h3>
-            <p id="varianceNote" style="color: var(--muted); line-height: 1.55;">No draft has been generated yet.</p>
+            <div class="section-heading">
+              <div>
+                <h3>AI variance commentary</h3>
+                <p>Generated from the latest KPI pack and management update.</p>
+              </div>
+              <span class="badge warning">Watch</span>
+            </div>
+            <div class="variance-note" id="varianceNote">
+              <article class="note-block">
+                <strong>What changed</strong>
+                <p>Revenue is 15% below budget and EBITDA is 22% below budget. Net debt is 8% above plan while cash conversion fell to 64%.</p>
+              </article>
+              <article class="note-block">
+                <strong>Why it changed</strong>
+                <p>Management attributes the gap to delayed enterprise onboarding, lower renewal expansion, and margin pressure from legacy service contracts.</p>
+              </article>
+              <article class="note-block">
+                <strong>Key risks</strong>
+                <p>The current run-rate may pressure covenant headroom if Q3 bookings do not recover and working-capital discipline remains weak.</p>
+              </article>
+              <article class="note-block">
+                <strong>Assumptions</strong>
+                <p>The full-year budget still assumes a Q3 rebound. That looks aggressive unless signed pipeline converts within the next 45 days.</p>
+              </article>
+              <article class="note-block wide">
+                <strong>Follow-up questions</strong>
+                <ul>
+                  <li>Which delayed customers have signed implementation dates?</li>
+                  <li>What cost actions protect EBITDA if revenue stays 10% below plan?</li>
+                  <li>How much cash is tied up in overdue receivables?</li>
+                </ul>
+              </article>
+            </div>
           </section>
         </section>
 
@@ -1292,31 +1406,6 @@
             <article class="module"><span class="badge">Future</span><strong>Automation Manager</strong><span>Defines triggers for review reminders and KPI deadlines.</span></article>
             <article class="module"><span class="badge">Future</span><strong>Permissions and Audit</strong><span>Controls confidential documents and AI approval logs.</span></article>
           </div>
-          <section class="surface" style="margin-top: 20px;">
-            <h3 style="margin-top: 0;">Partner decisions needed</h3>
-            <div class="decision-grid">
-              <article class="decision">
-                <div class="decision-index">1</div>
-                <strong>First workflow</strong>
-                <span>NDA review, IM screening, IC memo, or KPI reporting?</span>
-              </article>
-              <article class="decision">
-                <div class="decision-index">2</div>
-                <strong>Document source</strong>
-                <span>SharePoint, Google Drive, data room, email, or local upload?</span>
-              </article>
-              <article class="decision">
-                <div class="decision-index">3</div>
-                <strong>Export priority</strong>
-                <span>Word, Excel, PowerPoint, PDF, or all later?</span>
-              </article>
-              <article class="decision">
-                <div class="decision-index">4</div>
-                <strong>Product direction</strong>
-                <span>Internal tool first, or SaaS-ready from day one?</span>
-              </article>
-            </div>
-          </section>
         </section>
       </main>
     </div>
@@ -1331,7 +1420,7 @@
         overview: "BoldMind Deal OS",
         dashboard: "Fund operating cockpit",
         nda: "NDA review assistant",
-        portfolio: "Portfolio monitoring preview",
+        portfolio: "Portfolio monitoring",
         modules: "Module map"
       };
 
@@ -1380,15 +1469,8 @@
       document.getElementById("runReviewBtn")?.addEventListener("click", () => {
         const timeSaved = document.getElementById("timeSaved");
         timeSaved.textContent = timeSaved.textContent === "12h" ? "14h" : "12h";
-        addActivity("Review completed. Screening note and approval queue refreshed.");
+        addActivity("Review completed. Screening note and activity feed refreshed.");
         showToast("Review completed.");
-      });
-
-      document.getElementById("resetTasksBtn")?.addEventListener("click", () => {
-        document.querySelectorAll(".task-row input").forEach((input) => {
-          input.checked = false;
-        });
-        showToast("Task checks reset.");
       });
 
       document.getElementById("generateNdaBtn")?.addEventListener("click", () => {
@@ -1399,9 +1481,33 @@
       });
 
       document.getElementById("draftVarianceBtn")?.addEventListener("click", () => {
-        document.getElementById("varianceNote").textContent =
-          "Draft variance note: PortfolioCo is below budget due to delayed enterprise onboarding and margin pressure in legacy contracts. Analyst review is required before reporting.";
-        showToast("Variance note drafted.");
+        document.getElementById("varianceNote").innerHTML = `
+          <article class="note-block">
+            <strong>What changed</strong>
+            <p>Revenue stayed 15% below budget for a second month and EBITDA deleveraged faster than revenue, pointing to fixed-cost absorption rather than one isolated miss.</p>
+          </article>
+          <article class="note-block">
+            <strong>Why it changed</strong>
+            <p>The latest update points to two enterprise go-lives slipping into Q3, weaker upsell conversion, and legacy contracts renewing at lower gross margin.</p>
+          </article>
+          <article class="note-block">
+            <strong>Key risks</strong>
+            <p>Covenant headroom and lender confidence become the immediate risks if bookings do not recover before the next reporting cycle.</p>
+          </article>
+          <article class="note-block">
+            <strong>Assumptions</strong>
+            <p>Management's Q3 recovery case is still possible, but it depends on signed pipeline converting within 45 days and a faster receivables clean-up.</p>
+          </article>
+          <article class="note-block wide">
+            <strong>Follow-up questions</strong>
+            <ul>
+              <li>Which Q3 pipeline deals are contractually committed versus verbal?</li>
+              <li>What immediate cost levers can offset another month of revenue delay?</li>
+              <li>Which customers drive the receivables build and what collection dates are confirmed?</li>
+            </ul>
+          </article>
+        `;
+        showToast("AI variance note refreshed.");
       });
     </script>
   </body>
